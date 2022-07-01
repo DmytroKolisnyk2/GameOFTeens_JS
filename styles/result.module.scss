@@ -1,0 +1,26 @@
+@import './styles/variables.scss';
+
+.results__wrapper {
+  background-color: $belge;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10px;
+  height: 100%;
+}
+
+.result {
+  text-align: center;
+  margin: 50px 0;
+  font-family: $arima;
+  color: black;
+}
+
+.button {
+  width: 10%;
+  margin: 0 auto;
+  position: absolute;
+  left: 25px;
+  top: 50px;
+  // background-color: $purple;
+}

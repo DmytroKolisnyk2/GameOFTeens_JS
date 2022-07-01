@@ -1,0 +1,16 @@
+@import '../../styles/variables.scss';
+
+.polarArea__wrapper {
+  width: 500px;
+  margin: 0 auto;
+}
+.diagram {
+  margin-bottom: 25px;
+}
+
+.text {
+  margin-bottom: 50px;
+  font-family: $roboto;
+  text-align: center;
+  color: black;
+}
