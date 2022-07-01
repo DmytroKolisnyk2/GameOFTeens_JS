@@ -5,9 +5,9 @@ import '../styles/global.scss';
 import { Provider } from "react-redux";
 import {
   store,
-  // persistor
+  persistor
 } from "../redux/store";
-// import { PersistGate } from "redux-persist/integration/react";
+import { PersistGate } from "redux-persist/integration/react";
 
 import NotificationContainer from 'react-notifications/lib/NotificationContainer';
 import ScrollTopArrow from "../components/ScrollTopArrow/ScrollTopArrow";
@@ -32,11 +32,11 @@ function MyApp({ Component, pageProps }) {
 
     <div id="root-modal"></div>
 
-    {/* <PersistGate loading={null} persistor={persistor}> */}
-    <Provider store={store}>
-      <Component {...pageProps} />
-    </Provider>
-    {/* </PersistGate> */}
+    <PersistGate loading={null} persistor={persistor}>
+      <Provider store={store}>
+        <Component {...pageProps} />
+      </Provider>
+    </PersistGate>
 
     <NextNProgress
       color="tomato"
