@@ -1,8 +1,8 @@
 import Head from 'next/head';
 import "../styles/reset.scss"
 import '../styles/global.scss';
-import Footer from "../components/Footer/Footer";
-
+// import Footer from "../components/Footer/Footer";
+import Header from '../components/Header/Header';
 
 import { Provider } from "react-redux";
 import { store, persistor } from "../redux/store";
@@ -15,6 +15,7 @@ import NextNProgress from "nextjs-progressbar";
 function MyApp({ Component, pageProps }) {
   return <>
     <Head>
+    
       <meta charSet="utf-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <meta name="theme-color" content="#000000" />
@@ -27,7 +28,7 @@ function MyApp({ Component, pageProps }) {
       {Component.title ? <title>{Component.title}</title> : <title>Project</title>}
 
     </Head>
-
+    <Header/>
     <div id="root-modal"></div>
 
     <PersistGate loading={null} persistor={persistor}>
@@ -43,7 +44,7 @@ function MyApp({ Component, pageProps }) {
 
     {/* <ScrollTopArrow bgColor="red" /> */}
     <NotificationContainer />
-    <Footer/>
+    {/* <Footer/> */}
   </>
 }
 
