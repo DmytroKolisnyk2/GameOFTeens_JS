@@ -4,17 +4,15 @@ import "../styles/reset.scss"
 import '../styles/global.scss';
 import 'react-notifications/lib/notifications.css';
 
+import Footer from "../components/Footer/Footer";
+
 import { Provider } from "react-redux";
-import {
-  store,
-  persistor
-} from "../redux/store";
+import { store, persistor } from "../redux/store";
 import { PersistGate } from "redux-persist/integration/react";
 
-import NotificationContainer from 'react-notifications/lib/NotificationContainer';
+import NotificationContainer from "react-notifications/lib/NotificationContainer";
 import ScrollTopArrow from "../components/ScrollTopArrow/ScrollTopArrow";
 import NextNProgress from "nextjs-progressbar";
-
 
 function MyApp({ Component, pageProps }) {
   return <>
@@ -45,9 +43,10 @@ function MyApp({ Component, pageProps }) {
       showOnShallow={true}
     />
 
-    <ScrollTopArrow bgColor="red" />
+    {/* <ScrollTopArrow bgColor="red" /> */}
     <NotificationContainer />
+    <Footer/>
   </>
 }
 
-export default MyApp
+export default MyApp;

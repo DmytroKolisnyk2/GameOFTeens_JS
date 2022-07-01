@@ -1,0 +1,129 @@
+@import '../../styles/variables.scss';
+
+.footer {
+    width: 100vw;
+    padding: 25px;
+    background-color: $brown;
+    margin: 0 auto;
+}
+
+.content {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto 37px auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.wrapperLogo {
+    max-width: 255px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.image {
+    width: 68px;
+    height: 68px;
+    border-radius: 50%;
+}
+
+.logo {
+    text-align: center;
+    font-family: $rubic;
+    font-weight: 700;
+    font-size: 32px;
+    color: black;
+}
+
+.avatar {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.wrapperLinks {
+    max-width: 260px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.link {
+    position: relative;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    &:hover > .overlay {
+        opacity: 1;
+        visibility: initial;
+        pointer-events: initial;
+    }
+}
+
+.overlay {
+    z-index: 99;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.4);
+    width: 56px;
+    height: 56px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: 200ms linear;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon {
+    width: 28px;
+    height: 28px;
+    color: $purple;
+}
+
+.wrapperTeam {
+    max-width: 370px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.teamTitle {
+    font-size: 20px;
+    font-weight: 700;
+    font-family: $arima;
+    color: black;
+    margin-bottom: 10px;
+}
+
+.wrapperText {
+    margin: 0 auto;
+    max-width: 255px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footerText {
+    color: black;
+    font-size: 22px;
+    font-weight: 700;
+    font-family: $arima;
+}
+
+.copyRightIcon {
+    width: 25px;
+    height: 25px;
+}
