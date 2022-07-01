@@ -1,8 +1,10 @@
 import Head from 'next/head';
+
 import "../styles/reset.scss"
 import '../styles/global.scss';
-import Footer from "../components/Footer/Footer";
+import 'react-notifications/lib/notifications.css';
 
+import Footer from "../components/Footer/Footer";
 
 import { Provider } from "react-redux";
 import { store, persistor } from "../redux/store";
