@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import "../styles/reset.scss"
 import '../styles/global.scss';
+import Footer from "../components/Footer/Footer";
 
 import { Provider } from "react-redux";
 import {
@@ -43,8 +44,9 @@ function MyApp({ Component, pageProps }) {
       showOnShallow={true}
     />
 
-    <ScrollTopArrow bgColor="red" />
+    {/* <ScrollTopArrow bgColor="red" /> */}
     <NotificationContainer />
+    <Footer/>
   </>
 }
 
