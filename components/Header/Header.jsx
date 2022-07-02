@@ -9,8 +9,14 @@ import { useDispatch } from "react-redux";
 import NotificationManager from "react-notifications/lib/NotificationManager";
 import { deleteCurrentUser } from "../../redux/currentUser/currentUser-actions";
 import SettingsIcon from '@mui/icons-material/Settings';
+import { useRouter } from "next/router";
+import Link from "next/link";
+import { language } from "../../redux/localization/locales-reducers";
+import { useTranslations } from "next-intl";
 
 const Header = ({handleOpenModal}) => {
+  const t = useTranslations("Header");
+  const { locales } = useRouter();
   const username = useSelector(getCurrentUserName);
   const dispatch = useDispatch();
   return (
@@ -26,7 +32,7 @@ const Header = ({handleOpenModal}) => {
                 href={"/"}
                 classes={HeaderStyles.link}
               >
-                Home
+                {t('home')}
               </NavLink>
               <NavLink
                 activeClass={HeaderStyles.linkActive}
@@ -43,41 +49,50 @@ const Header = ({handleOpenModal}) => {
                     href={"/[userId]ds/calendar"}
                     classes={HeaderStyles.link}
                   >
-                    Calendar
+                    {t('calendar')}
                   </NavLink>
                   <NavLink
                     activeClass={HeaderStyles.linkActive}
                     href={"/[userId]ds/result"}
                     classes={HeaderStyles.link}
                   >
-                    Result
+                    {t('result')}
                   </NavLink>
                 </>
               )}
             </ul>
           </nav>
         </div>
-
+        {[...locales].sort().map((local) => (
+          <Link
+            className={HeaderStyles.link}
+            key={local}
+            href="/"
+            locale={local}
+          >
+            {local}
+          </Link>
+        ))}
         {username ? (
           <div className={HeaderStyles.user_wrapper}>
             <p className={HeaderStyles.user_name}>{username}</p>
             <Button
               onClick={() => {
                 dispatch(deleteCurrentUser());
-                NotificationManager.success("You successfully exit");
+                NotificationManager.success(t('exitNo'));
               }}
               color="secondary"
               variant="outlined"
               endIcon={<LogoutIcon />}
             >
-              Exit
+              {t('exit')}
             </Button>
             <SettingsIcon onClick={handleOpenModal} className={HeaderStyles.icon}/>
           </div>
         ) : (
           <>
           <div className={HeaderStyles.user_wrapper}>
-          <span>Please add user profile</span>
+          <span>{t('add')}</span>
           <SettingsIcon onClick={handleOpenModal} className={HeaderStyles.icon}/>
           </div>
           </>
