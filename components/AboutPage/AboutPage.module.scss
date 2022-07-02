@@ -68,3 +68,27 @@
     margin: 0 auto;
     display: flex;
 }
+
+.themeDark {
+    background-color: $darkThemeMain;
+}
+
+.themeLight {
+    background-color: $lightThemeMain;
+}
+
+.cardDarkTheme {
+    background-color: $darkTheme;
+}
+
+.cardLightTheme {
+    background-color: $lightTheme;
+}
+
+.darkThemeText {
+    color: $darkThemeText;
+}
+
+.lightThemeText {
+    color: $lightThemeText;
+}

@@ -9,7 +9,9 @@ import { getCurrentUserId } from "../../redux/currentUser/currentUser-selectors"
 import { getUserDataById } from "../../redux/users/user-selectors";
 import { useTranslations } from "next-intl";
 import NotificationManager from "react-notifications/lib/NotificationManager";
+import { getTheme } from "../../redux/theme/theme-selectors";
 import Router from "next/router";
+
 
 const Calendar = () => {
   const t = useTranslations("Calendar");
@@ -18,7 +20,18 @@ const Calendar = () => {
   const userId = useSelector(getCurrentUserId);
   const userData = useSelector(getUserDataById(userId));
   const [data, setData] = useState(userData);
+  const theme = useSelector(getTheme);
 
+  const setStyle = (theme, style, darkTheme, lightTheme) => {
+    switch (theme) {
+      case "default":
+        return style;
+      case "dark":
+        return `${style} ${darkTheme}`;
+      case "light":
+        return `${style} ${lightTheme}`;
+    }
+  };
   const submitValue = (event) => {
     event.preventDefault();
     if (isValidData()) {
@@ -34,14 +47,14 @@ const Calendar = () => {
     );
 
   return (
-    <section className={styles.calendarPage}>
+    <section className={setStyle(theme, styles.calendarPage, styles.themeDark, styles.themeLight)}>
       <PrivateRoute>
         {data && (
           <form onSubmit={submitValue}>
             <div className={styles.calendar}>
               {Object.keys(data).map((day) => (
                 <div key={day} className={styles.column}>
-                  <h3 className={styles.title}>{day}</h3>
+                  <h3 className={setStyle(theme, styles.title, styles.darkThemeText, styles.lightThemeText)}>{day}</h3>
                   {Object.keys(data[day]).map((item) => (
                     <TextField
                       day={day}

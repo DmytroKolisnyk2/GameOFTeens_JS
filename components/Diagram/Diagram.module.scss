@@ -39,3 +39,19 @@
   top: 120px;
   // background-color: $purple;
 }
+
+.themeDark {
+  background-color: $darkThemeMain;
+}
+
+.themeLight {
+  background-color: $lightThemeMain;
+}
+
+.darkThemeText {
+  color: $darkThemeText;
+}
+
+.lightThemeText {
+  color: $lightThemeText;
+}
