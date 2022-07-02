@@ -1,11 +1,7 @@
 import { createReducer } from "@reduxjs/toolkit";
-import { setUserLanguage } from "./locales-actions";
+import { setDefaultLanguage, setUkrainianLanguage } from "./locales-actions";
 
-export const language = createReducer([], {
-  [setUserLanguage]: (state, {payload}) => [
-      ...state,
-      {
-        language: payload
-      },
-    ]
+export const language = createReducer('', {
+  [setDefaultLanguage]: (state, action) => action.payload,
+  [setUkrainianLanguage]: (state, action) => action.payload,
 })
