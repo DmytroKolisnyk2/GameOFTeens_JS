@@ -6,6 +6,9 @@
     margin: 0 auto;
     padding: 16px 20px;
     transition: 200ms linear;
+    @media screen and (max-width: 650px) {
+        padding: 26px 20px;
+    }
 }
 
 .themeDark {
@@ -24,6 +27,10 @@
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
+    @media screen and (max-width: 650px) {
+        justify-content: space-around;
+        flex-direction: column;
+    }
 }
 
 .wrapperLogo {
@@ -32,6 +39,12 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-right: 40px;
+    @media screen and (max-width: 650px) {
+        order: 2;
+        margin: 0 0 15px ;
+
+    }
 }
 
 .image {
@@ -63,6 +76,9 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    @media screen and (max-width: 650px) {
+        margin-bottom: 30px;
+    }
 }
 
 .link {
@@ -142,7 +158,6 @@
     width: 15px;
     height: 15px;
 }
-
 
 .darkThemeText {
     color: $darkThemeText;

@@ -4,6 +4,7 @@ import MenuItem from "@mui/material/MenuItem";
 import styles from "./Settings.module.scss";
 import { useState } from "react";
 import {useRouter} from "next/router"
+
 import TranslateIcon from "@mui/icons-material/Translate";
 import PaletteIcon from "@mui/icons-material/Palette";
 import { useDispatch, useSelector } from "react-redux";
@@ -14,6 +15,7 @@ import {
   changeLightTheme,
   changeDarkTheme,
 } from "../../redux/theme/theme-actions";
+
 import {
   setDefaultLanguage,
   setUkrainianLanguage,
@@ -24,6 +26,9 @@ import {useTranslations} from "next-intl"
 const SettingsModal = ({ isOpen, handleClose }) => {
   const t = useTranslations("Settings");
   const router = useRouter()
+
+
+const SettingsModal = ({ isOpen, handleClose }) => {
   const dispatch = useDispatch();
   const theme = useSelector(getTheme);
   const language = useSelector(getLang);
@@ -69,6 +74,10 @@ const SettingsModal = ({ isOpen, handleClose }) => {
           styles.themeLight
         )}
       >
+  const [language, setLanguage] = useState("english");
+  return (
+    <Modal open={isOpen} onClose={handleClose} className={styles.wrapperModal}>
+      <div className={setStyle(theme, styles.modal, styles.themeDark, styles.themeLight)}>
         <h3
           className={setStyle(
             theme,
@@ -142,6 +151,7 @@ const SettingsModal = ({ isOpen, handleClose }) => {
               id="language"
               value={language}
               onChange={(event) => onChangeLang(event.target.value)}
+
             >
               <MenuItem value={"english"}>english</MenuItem>
               <MenuItem value={"ukrainian"}>ukrainian</MenuItem>

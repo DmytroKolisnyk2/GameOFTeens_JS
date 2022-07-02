@@ -2,6 +2,7 @@ import { createReducer } from "@reduxjs/toolkit";
 import { v4 } from "uuid";
 import { addUser, removeUser } from "./users-actions";
 import { updateData } from "./data/data-actions";
+import NotificationManager from "react-notifications/lib/NotificationManager";
 
 const INITIAL_STATE = {
   health: '',
@@ -27,13 +28,16 @@ export const users = createReducer([], {
     },
   ],
 
-  [removeUser]: (state, { payload }) =>
-    state.filter((item) => item.id !== payload),
+  [removeUser]: (state, { payload }) => {
+    NotificationManager.success('Calendar successfully deleted')
+    return state.filter((item) => item.id !== payload)
+  },
 
   [updateData]: (state, { payload }) => {
     const updateUser = state.find((item) => item.id === payload.id);
     updateUser.data = payload.data;
-    return void([
+    NotificationManager.success('Calendar successfully saved')
+    return void ([
       ...state.filter((item) => item.id !== payload.id), updateUser
     ])
   }

@@ -40,6 +40,7 @@
     "languageC_text": "Our application works in English and Ukrainian, so that everyone can use our application",
     "add_account": "Add account",
     "calendar": "Go to the calendar",
+    "login": "Login First",
     "language_change": "Language change"
   },
   "Users": {
@@ -66,7 +67,7 @@
     "friends": "Friends",
     "family": "Family",
     "carrier": "Carrier",
-    "error": "You should type only positive numbers :)"
+    "error": "You should type only positive numbers and less than 1000 :)"
   },
   "Main": {
     "title": "Create your own balance wheel",
