@@ -9,8 +9,10 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import CopyrightIcon from "@mui/icons-material/Copyright";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GitHubIcon from "@mui/icons-material/GitHub";
+import { useTranslations } from "next-intl"
 
 const Footer = () => {
+  const t = useTranslations("Footer");
   return (
     <footer className={styles.footer}>
       <div className={styles.content}>
@@ -25,7 +27,7 @@ const Footer = () => {
           <h2 className={styles.logo}>HOPEteam</h2>
         </a>
         <div className={styles.wrapperTeam}>
-          <h3 className={styles.teamTitle}>Our Team :</h3>
+          <h3 className={styles.teamTitle}>{t('team')}</h3>
           <div className={styles.wrapperLinks}>
             <a
               className={styles.link}
@@ -91,7 +93,7 @@ const Footer = () => {
         </div>
       </div>
       <div className={styles.wrapperText}>
-        <h4 className={styles.footerText}>All rights are reserved.</h4>
+        <h4 className={styles.footerText}>{t('rights')}</h4>
         <CopyrightIcon className={styles.copyRightIcon} />
       </div>
     </footer>

@@ -1,141 +1,242 @@
-import {useState} from 'react';
-import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
-import styles from '../../styles/calendar.module.scss';
+import { useState } from "react";
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
+import styles from "../../styles/calendar.module.scss";
 import NotificationManager from "react-notifications/lib/NotificationManager";
+import { useTranslations } from "next-intl";
 
 const Calendar = () => {
-    const [mon, setMon] = useState({
-        health: '',
-        progress: '',
-        travels: '',
-        hobby: '',
-        friends: '',
-        family: '',
-        carrier: '',
-        setValue: (event, activity) => {
-            console.log(+event.target.value)
-            return setMon((prevState) => ({...prevState, [activity]: +event.target.value}))
-        },
-        day: 'Mon',
-        id: 1,
-    });
-    const [tue, setTue] = useState({
-        health: '',
-        progress: '',
-        travels: '',
-        hobby: '',
-        friends: '',
-        family: '',
-        carrier: '',
-        setValue: (event, activity) => {
-            return setTue((prevState) => ({...prevState, [activity]: +event.target.value}))
-        },        
-        day: 'Tue',
-        id: 2,
-    });
-    const [wed, setWed] = useState({
-        health: '',
-        progress: '',
-        travels: '',
-        hobby: '',
-        friends: '',
-        family: '',
-        carrier: '',
-        setValue: (event, activity) => {
-            return setWed((prevState) => ({...prevState, [activity]: +event.target.value}))
-        },
-        day: 'Wed',
-        id: 3,
-    });
-    const [thu, setThu] = useState({
-        health: '',
-        progress: '',
-        travels: '',
-        hobby: '',
-        friends: '',
-        family: '',
-        carrier: '',
-        setValue: (event, activity) => {
-            return setThu((prevState) => ({...prevState, [activity]: +event.target.value}))
-        },
-        day: 'Thu',
-        id: 4,
-    });
-    const [fri, setFri] = useState({
-        health: '',
-        progress: '',
-        travels: '',
-        hobby: '',
-        friends: '',
-        family: '',
-        carrier: '',
-        setValue: (event, activity) => {
-            return setFri((prevState) => ({...prevState, [activity]: +event.target.value}))
-        },
-        day: 'Fri',
-        id: 5,
-    });
-    const [sat, setSat] = useState({
-        health: '',
-        progress: '',
-        travels: '',
-        hobby: '',
-        friends: '',
-        family: '',
-        carrier: '',
-        setValue: (event, activity) => {
-            return setSat((prevState) => ({...prevState, [activity]: +event.target.value}))
-        },
-        day: 'Sat',
-        id: 6,
-    });
-    const [sun, setSun] = useState({
-        health: '',
-        progress: '',
-        travels: '',
-        hobby: '',
-        friends: '',
-        family: '',
-        carrier: '',
-        setValue: (event, activity) => {
-            return setSun((prevState) => ({...prevState, [activity]: +event.target.value}))
-        },
-        day: 'Sun',
-        id: 7
-    });
-    const [arrayDays, setArrayDays] = useState([mon, tue, wed, thu, fri, sat, sun]);
-    const submitValue = (event, dayObj) => {
-        event.preventDefault();
-        const dayValues = Object.values(dayObj);
-        const isCorrectValue = dayValues.every(item => item > 0);
-        if(isCorrectValue) {
-            console.log(isCorrectValue);
-            return console.log(dayObj)
-        }
-        NotificationManager.error('You should type only positive numbers :)')
-    };
-    return(
-        <section className={styles.calendarPage}>
-            <div className={styles.calendar}>
-            {arrayDays.map(item => {
-                return(
-                    <div key={item.id} className={styles.column}>
-                    <h3 className={styles.title}>{item.day}</h3>
-                    <form onSubmit={event => submitValue(event, item)}>
-                    <TextField value={item.health} onChange={event => item.setValue(event, 'health')} margin='dense' name="health" fullWidth variant="outlined" label="health" type="number"/>
-                    <TextField value={item.progress} onChange={event => item.setValue(event, "progress")} margin='dense' name="progress" fullWidth variant="outlined" label="progress" type="number"/>
-                    <TextField value={item.travels} onChange={event => item.setValue(event, "travels")} margin='dense' name="travels" fullWidth variant="outlined" label="travels" type="number"/>
-                    <TextField value={item.hobby} onChange={event => item.setValue(event, "hobby")} margin='dense' name="hobby" fullWidth variant="outlined" label="hobby" type="number"/>
-                    <TextField value={item.friends} onChange={event => item.setValue(event, "friends")} margin='dense' name="friends" fullWidth variant="outlined" label="friends" type="number"/>
-                    <TextField value={item.family} onChange={event => item.setValue(event, "family")} margin='dense' name="family" fullWidth variant="outlined" label="family" type="number"/>
-                    <TextField value={item.carrier} onChange={event => item.setValue(event, "carrier")} margin='dense' name="carrier" fullWidth variant="outlined" label="carrier" type="number"/>
-                    <Button type="submit" className={styles.submitButton} color="secondary" variant="outlined">Save</Button>
-                    </form>
-                </div>
-                );
-            })}
-            {/* <div className={styles.column}>
+  const t = useTranslations("Calendar");
+  const [mon, setMon] = useState({
+    health: "",
+    progress: "",
+    travels: "",
+    hobby: "",
+    friends: "",
+    family: "",
+    carrier: "",
+    setValue: (event, activity) => {
+      console.log(+event.target.value);
+      return setMon((prevState) => ({
+        ...prevState,
+        [activity]: +event.target.value,
+      }));
+    },
+    day: t('mon'),
+    id: 1,
+  });
+  const [tue, setTue] = useState({
+    health: "",
+    progress: "",
+    travels: "",
+    hobby: "",
+    friends: "",
+    family: "",
+    carrier: "",
+    setValue: (event, activity) => {
+      return setTue((prevState) => ({
+        ...prevState,
+        [activity]: +event.target.value,
+      }));
+    },
+    day: t('tue'),
+    id: 2,
+  });
+  const [wed, setWed] = useState({
+    health: "",
+    progress: "",
+    travels: "",
+    hobby: "",
+    friends: "",
+    family: "",
+    carrier: "",
+    setValue: (event, activity) => {
+      return setWed((prevState) => ({
+        ...prevState,
+        [activity]: +event.target.value,
+      }));
+    },
+    day: t('wed'),
+    id: 3,
+  });
+  const [thu, setThu] = useState({
+    health: "",
+    progress: "",
+    travels: "",
+    hobby: "",
+    friends: "",
+    family: "",
+    carrier: "",
+    setValue: (event, activity) => {
+      return setThu((prevState) => ({
+        ...prevState,
+        [activity]: +event.target.value,
+      }));
+    },
+    day: t('thu'),
+    id: 4,
+  });
+  const [fri, setFri] = useState({
+    health: "",
+    progress: "",
+    travels: "",
+    hobby: "",
+    friends: "",
+    family: "",
+    carrier: "",
+    setValue: (event, activity) => {
+      return setFri((prevState) => ({
+        ...prevState,
+        [activity]: +event.target.value,
+      }));
+    },
+    day: t('fri'),
+    id: 5,
+  });
+  const [sat, setSat] = useState({
+    health: "",
+    progress: "",
+    travels: "",
+    hobby: "",
+    friends: "",
+    family: "",
+    carrier: "",
+    setValue: (event, activity) => {
+      return setSat((prevState) => ({
+        ...prevState,
+        [activity]: +event.target.value,
+      }));
+    },
+    day: t('sat'),
+    id: 6,
+  });
+  const [sun, setSun] = useState({
+    health: "",
+    progress: "",
+    travels: "",
+    hobby: "",
+    friends: "",
+    family: "",
+    carrier: "",
+    setValue: (event, activity) => {
+      return setSun((prevState) => ({
+        ...prevState,
+        [activity]: +event.target.value,
+      }));
+    },
+    day: t('sun'),
+    id: 7,
+  });
+  const [arrayDays, setArrayDays] = useState([
+    mon,
+    tue,
+    wed,
+    thu,
+    fri,
+    sat,
+    sun,
+  ]);
+  const submitValue = (event, dayObj) => {
+    event.preventDefault();
+    const dayValues = Object.values(dayObj);
+    const isCorrectValue = dayValues.every((item) => item > 0);
+    if (isCorrectValue) {
+      console.log(isCorrectValue);
+      return console.log(dayObj);
+    }
+    NotificationManager.error(t('error'));
+  };
+  return (
+    <section className={styles.calendarPage}>
+      <div className={styles.calendar}>
+        {arrayDays.map((item) => {
+          return (
+            <div key={item.id} className={styles.column}>
+              <h3 className={styles.title}>{item.day}</h3>
+              <form onSubmit={(event) => submitValue(event, item)}>
+                <TextField
+                  value={item.health}
+                  onChange={(event) => item.setValue(event, "health")}
+                  margin="dense"
+                  name="health"
+                  fullWidth
+                  variant="outlined"
+                  label={t("health")}
+                  type="number"
+                />
+                <TextField
+                  value={item.progress}
+                  onChange={(event) => item.setValue(event, "progress")}
+                  margin="dense"
+                  name="progress"
+                  fullWidth
+                  variant="outlined"
+                  label={t("progress")}
+                  type="number"
+                />
+                <TextField
+                  value={item.travels}
+                  onChange={(event) => item.setValue(event, "travels")}
+                  margin="dense"
+                  name="travels"
+                  fullWidth
+                  variant="outlined"
+                  label={t("travels")}
+                  type="number"
+                />
+                <TextField
+                  value={item.hobby}
+                  onChange={(event) => item.setValue(event, "hobby")}
+                  margin="dense"
+                  name="hobby"
+                  fullWidth
+                  variant="outlined"
+                  label={t("hobby")}
+                  type="number"
+                />
+                <TextField
+                  value={item.friends}
+                  onChange={(event) => item.setValue(event, "friends")}
+                  margin="dense"
+                  name="friends"
+                  fullWidth
+                  variant="outlined"
+                  label={t("friends")}
+                  type="number"
+                />
+                <TextField
+                  value={item.family}
+                  onChange={(event) => item.setValue(event, "family")}
+                  margin="dense"
+                  name="family"
+                  fullWidth
+                  variant="outlined"
+                  label={t("family")}
+                  type="number"
+                />
+                <TextField
+                  value={item.carrier}
+                  onChange={(event) => item.setValue(event, "carrier")}
+                  margin="dense"
+                  name="carrier"
+                  fullWidth
+                  variant="outlined"
+                  label={t("carrier")}
+                  type="number"
+                />
+                <Button
+                  type="submit"
+                  className={styles.submitButton}
+                  color="secondary"
+                  variant="outlined"
+                >
+                  {t('save')}
+                </Button>
+              </form>
+            </div>
+          );
+        })}
+        {/* <div className={styles.column}>
                     <h3 className={styles.title}>Mon</h3>
                     <form onSubmit={event => submitValue(event, mon)}>
                     <TextField value={mon.health} onChange={event => setMon(prevState => ({...prevState, health: +event.target.value}))} margin='dense' name="health" fullWidth variant="outlined" label="health" type="number"/>
@@ -226,10 +327,17 @@ const Calendar = () => {
                     <Button type="submit" className={styles.submitButton} color="secondary" variant="outlined">Save</Button>
                     </form>
                 </div> */}
-            </div>
-            <Button className={styles.button} color="secondary" type="text" variant="contained">Generate result</Button>
-        </section>
-    );
+      </div>
+      <Button
+        className={styles.button}
+        color="secondary"
+        type="text"
+        variant="contained"
+      >
+        {t('result')}
+      </Button>
+    </section>
+  );
 };
 
 export default Calendar;

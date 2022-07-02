@@ -40,7 +40,7 @@ const Header = ({handleOpenModal}) => {
                 href={"/users"}
                 classes={HeaderStyles.link}
               >
-                Users
+                {t('users')}
               </NavLink>
               {username && (
                 <>
