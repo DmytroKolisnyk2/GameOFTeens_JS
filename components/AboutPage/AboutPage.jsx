@@ -3,12 +3,16 @@ import LanguageIcon from "@mui/icons-material/Language";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { useTranslations } from "next-intl";
 import { Button } from "@mui/material";
 import Link from "next/link";
+import { getCurrentUserName } from "../../redux/currentUser/currentUser-selectors";
+import { useSelector } from "react-redux";
 
-export default function AboutPage() {
+export default function AboutPage({setIsOpen}) {
   const t = useTranslations("About");
+  const username = useSelector(getCurrentUserName);
   return (
     <section className={styles.main_wrapper}>
       <div className={styles.wrapper}>
@@ -36,7 +40,7 @@ export default function AboutPage() {
           <AccessTimeIcon className={styles.item_img} />
           <h5 className={styles.item_title}>{t("resultI_title")}</h5>
           <p className={styles.item_text}>{t("resultI_text")}</p>
-          <Link href={"/user/result"}>
+          {username ? <Link href={"/user/calendar"}>
             <Button
               className={styles.img_btn}
               color="secondary"
@@ -45,13 +49,22 @@ export default function AboutPage() {
             >
               {t("calendar")}
             </Button>
-          </Link>
+          </Link> : <Link href={"/users"}>
+            <Button
+              className={styles.img_btn}
+              color="secondary"
+              variant="outlined"
+              endIcon={<AccountCircleIcon />}
+            >
+              {t("login")}
+            </Button>
+          </Link>}
         </div>
         <div className={styles.item_wrapper}>
           <CheckCircleOutlineIcon className={styles.item_img} />
           <h5 className={styles.item_title}>{t("savingA_title")}</h5>
           <p className={styles.item_text}>{t("savingA_text")}</p>
-          <Link href={"/user/calendar"}>
+          {username ? <Link href={"/user/calendar"}>
             <Button
               className={styles.img_btn}
               color="secondary"
@@ -60,7 +73,17 @@ export default function AboutPage() {
             >
               {t("calendar")}
             </Button>
-          </Link>
+          </Link> : <Link href={"/users"}>
+            <Button
+              className={styles.img_btn}
+              color="secondary"
+              variant="outlined"
+              endIcon={<AccountCircleIcon />}
+            >
+              {t("login")}
+            </Button>
+          </Link>}
+
         </div>
         <div className={styles.item_wrapper}>
           <LanguageIcon className={styles.item_img} />
@@ -68,6 +91,7 @@ export default function AboutPage() {
           <p className={styles.item_text}>{t("languageC_text")}</p>
           <Link href={"/"}>
             <Button
+              onClick={setIsOpen}
               className={styles.img_btn}
               color="secondary"
               variant="outlined"

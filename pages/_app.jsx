@@ -48,13 +48,13 @@ function MyApp({ Component, pageProps }) {
         {Component.title ? <title>{Component.title}</title> : <title>Project</title>}
       </Head>
       <div id="root-modal"></div>
-
+      
       <IntlProvider locale={locale} messages={messages[locale]}>
         <PersistGate loading={null} persistor={persistor}>
           <Provider store={store}>
             <div className="body">
               <Header handleOpenModal={setIsOpen} />
-              <Component {...pageProps} />
+              <Component setIsOpen={setIsOpen} {...pageProps} />
               <Footer />
               <SettingsModal isOpen={Boolean(isOpen)} handleClose={handleClose} />
             </div>
@@ -66,7 +66,6 @@ function MyApp({ Component, pageProps }) {
       <NotificationContainer />
     </>
   );
-
 }
 
 export default MyApp;

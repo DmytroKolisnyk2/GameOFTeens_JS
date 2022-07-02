@@ -1,10 +1,10 @@
 
 import AboutPage from "../components/AboutPage/AboutPage";
 import MainPage from "../components/MainPage/MainPage";
-export default function Home() {
+export default function Home({setIsOpen}) {
  
 
   return (
-    <><MainPage /><AboutPage /></>
+    <><MainPage /><AboutPage setIsOpen={setIsOpen} /></>
   );
 }
