@@ -1,9 +1,9 @@
-/* eslint-disable react-hooks/rules-of-hooks */
 import { useRouter } from "next/router";
 import Diagram from "../../components/Diagram/Diagram";
 import styles from "../../styles/result.module.scss";
 import PrivateRoute from "../../components/PrivateRoute/PrivateRoute";
-
+import { Button } from "@mui/material";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { useSelector } from "react-redux";
 import { getUserDataById } from "../../redux/users/user-selectors";
 
@@ -41,7 +41,7 @@ const result = () => {
           size="large"
           color="secondary"
           variant="contained"
-          startIcon={<Arrow />}
+          startIcon={<ArrowBackIcon />}
           onClick={() => back()}
         >
           Go Back
