@@ -13,6 +13,7 @@ export default function AboutPage(){
         <section className={styles.main_wrapper}>
             <div className={styles.wrapper}>
             <h2 className={styles.main_title}>{t('about')}</h2>
+            <p className={styles.main_text}>{t('about_text')}</p>
            </div> 
            <h3 className={styles.title}>{t('about_title')}</h3>
            <div className={styles.cards_wrapper}>
@@ -25,7 +26,7 @@ export default function AboutPage(){
               color="secondary"
               variant="outlined"
               endIcon={<AddCircleOutlineIcon />} 
-            >Add account</Button>
+            >{t("add_account")}</Button>
             </Link>
             </div>
             <div className={styles.item_wrapper}>
@@ -37,7 +38,7 @@ export default function AboutPage(){
               color="secondary"
               variant="outlined"
               endIcon={<AccessTimeIcon />} 
-            >Go to the calendar</Button>
+            >{t("calendar")}</Button>
             </Link>
             </div>
             <div className={styles.item_wrapper}>
@@ -49,7 +50,7 @@ export default function AboutPage(){
               color="secondary"
               variant="outlined"
               endIcon={<CheckCircleOutlineIcon />} 
-            >Go to the calendar</Button>
+            >{t("calendar")}</Button>
             </Link>
             </div>
             <div className={styles.item_wrapper}>
@@ -61,7 +62,7 @@ export default function AboutPage(){
               color="secondary"
               variant="outlined"
               endIcon={<LanguageIcon />} 
-            >Language change</Button>
+            >{t("language_change")}</Button>
             </Link>
             </div>
             </div>

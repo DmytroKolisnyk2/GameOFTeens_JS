@@ -9,6 +9,7 @@ import styles from "./Diagram.module.scss";
 import { PolarArea } from "react-chartjs-2";
 import { useTranslations } from 'next-intl';
 import Button from "@mui/material/Button";
+import { useRouter } from "next/router";
 import Arrow from "@mui/icons-material/ArrowBack";
 ChartJS.register(RadialLinearScale, ArcElement, Tooltip, Legend);
 
@@ -42,6 +43,7 @@ export const initialData = {
 };
 
 const Diagram = ({ data }) => {
+  const { query, back } = useRouter();
   const t = useTranslations('Diagram');
   const newData = { ...initialData };
   const dataArr = [];

@@ -26,10 +26,9 @@ export default function users() {
           handleClose={() => setOpenDialog(false)}
         />
         <div className={styles.userWrapper}>
-  
-          <h2 className={styles.title}>How it works?</h2>
-          <p className={styles.text} >To create an account, you need to click the "create" button, after clicking on this button, a form will appear in which you need to enter your name. To authorize your account, click the button on the right. You can create many accounts. If necessary, you can delete your profile by clicking the delete button. Easy to use!</p>
-        
+          <h2 className={styles.title}>{t("how")}</h2>
+          <p className={styles.text}>{t("guide")}</p>
+
           <ul className={styles.usersList}>
             {users.map((item) => (
               <li key={item.id} className={styles.user}>
@@ -48,9 +47,7 @@ export default function users() {
                   <Button
                     onClick={() => {
                       dispatch(addCurrentUser(item));
-                      NotificationManager.success(
-                        t("added")
-                      );
+                      NotificationManager.success(t("added"));
                     }}
                     color="secondary"
                     variant="outlined"
@@ -66,7 +63,7 @@ export default function users() {
             color="secondary"
             variant="contained"
           >
-            {t('create')}
+            {t("create")}
           </Button>
         </div>
       </div>
