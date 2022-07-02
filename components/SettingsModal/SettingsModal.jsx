@@ -3,6 +3,7 @@ import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import styles from "./Settings.module.scss";
 import { useState } from "react";
+import {useRouter} from "next/router"
 import TranslateIcon from "@mui/icons-material/Translate";
 import PaletteIcon from "@mui/icons-material/Palette";
 import { useDispatch, useSelector } from "react-redux";
@@ -22,6 +23,7 @@ import {useTranslations} from "next-intl"
 
 const SettingsModal = ({ isOpen, handleClose }) => {
   const t = useTranslations("Settings");
+  const router = useRouter()
   const dispatch = useDispatch();
   const theme = useSelector(getTheme);
   const language = useSelector(getLang);
@@ -38,10 +40,12 @@ const SettingsModal = ({ isOpen, handleClose }) => {
   const onChangeLang = (value) => {
     switch (value) {
       case "english":
-        console.log('englisj');
+        router.push('/' + router.asPath)
         return dispatch(setDefaultLanguage("english"));
       case "ukrainian":
         console.log('ukr');
+        console.log(router);
+        router.push("/ukr" + router.asPath)
         return dispatch(setUkrainianLanguage("ukrainian"));
     }
   };
