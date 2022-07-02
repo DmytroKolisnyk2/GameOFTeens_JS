@@ -63,7 +63,7 @@ const Header = ({handleOpenModal}) => {
             </ul>
           </nav>
         </div>
-        {[...locales].sort().map((local) => (
+        {/* {[...locales].sort().map((local) => (
           <Link
             className={HeaderStyles.link}
             key={local}
@@ -72,7 +72,7 @@ const Header = ({handleOpenModal}) => {
           >
             {local}
           </Link>
-        ))}
+        ))} */}
         {username ? (
           <div className={HeaderStyles.user_wrapper}>
             <p className={HeaderStyles.user_name}>{username}</p>
