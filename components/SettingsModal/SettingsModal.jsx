@@ -40,7 +40,7 @@ const SettingsModal = ({ isOpen, handleClose }) => {
   const onChangeLang = (value) => {
     switch (value) {
       case "english":
-        router.push('/' + router.asPath)
+        router.push(router.asPath, "/", {locale: "en"})
         return dispatch(setDefaultLanguage("english"));
       case "ukrainian":
         console.log('ukr');
