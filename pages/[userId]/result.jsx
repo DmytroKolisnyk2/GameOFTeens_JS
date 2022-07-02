@@ -1,10 +1,10 @@
 import { useRouter } from "next/router";
 import Diagram from "../../components/Diagram/Diagram";
-import Button from "@mui/material/Button";
-import Arrow from "@mui/icons-material/ArrowBack";
 import styles from "../../styles/result.module.scss";
 import PrivateRoute from "../../components/PrivateRoute/PrivateRoute";
 import { store, persistor } from "../../redux/store.js";
+import { getCurrentUserData } from "../../redux/currentUser/currentUser-selectors";
+import { useSelector } from "react-redux";
 
 const result = () => {
   const { query, back } = useRouter();
@@ -18,7 +18,7 @@ const result = () => {
     carrier: 0,
   };
   const sum = () => {
-    const state = store.getState().currentUser.data;
+    const state = useSelector(getCurrentUserData);
     for (const day in state) {
       if (Object.hasOwnProperty.call(state, day)) {
         const element = state[day];
@@ -31,22 +31,7 @@ const result = () => {
     return totalSpending;
   };
   return (
-
-    <div className={styles.results__wrapper}>
-      <Button
-        className={styles.button}
-        size="large"
-        color="secondary"
-        variant="contained"
-        startIcon={<Arrow />}
-        onClick={() => back()}
-      >
-        Go Back
-      </Button>
-      <h1 className={styles.result}>Your result</h1>
-
-      <Diagram data={sum()} />
-    </div>
+    <Diagram data={sum()} />
   );
 };
 

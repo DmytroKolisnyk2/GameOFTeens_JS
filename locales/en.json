@@ -1,0 +1,24 @@
+{
+  "Diagram": {
+    "test": "Hello next locales!",
+    "and": "and",
+    "result": "Your result",
+    "advice": "You need to work with",
+    "health": "Health and Sport",
+    "progress": "Progress",
+    "rest": "Rest and Travels",
+    "hobby": "Hobbies",
+    "friends": "Friends",
+    "family": "Family",
+    "carrier": "Carrier",
+    "goBack": "Go Back"
+  },
+  "Header": {
+    "home": "Home",
+    "calendar": "Calendar",
+    "result": "result",
+    "exit": "Exit",
+    "exitNo": "You successfully exited",
+    "add": "Please add user profile"
+  }
+}
