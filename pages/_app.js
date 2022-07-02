@@ -18,7 +18,7 @@ import NextNProgress from "nextjs-progressbar";
 function MyApp({ Component, pageProps }) {
   return <>
     <Head>
-    
+
       <meta charSet="utf-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <meta name="theme-color" content="#000000" />
@@ -31,24 +31,24 @@ function MyApp({ Component, pageProps }) {
       {Component.title ? <title>{Component.title}</title> : <title>Project</title>}
 
     </Head>
-    <Header/>
     <div id="root-modal"></div>
 
-    <PersistGate loading={null} persistor={persistor}>
-      <Provider store={store}>
-        <Component {...pageProps} />
-      </Provider>
-    </PersistGate>
+    <div className='body'>
+      <Header />
+      <PersistGate loading={null} persistor={persistor}>
+        <Provider store={store}>
+          <Component {...pageProps} />
+        </Provider>
+      </PersistGate>
 
-    <NextNProgress
-      color="tomato"
-      showOnShallow={true}
-    />
-
-    <ScrollTopArrow bgColor="red" />
-    <NotificationContainer />
-    <Footer/>
- 
+      <NextNProgress
+        color="tomato"
+        showOnShallow={true}
+      />
+      <ScrollTopArrow bgColor="red" />
+      <NotificationContainer />
+      <Footer />
+    </div>
   </>
 }
 

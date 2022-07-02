@@ -1,6 +1,7 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
 // import { contacts } from "./contacts/contacts-reducers";
 import { users } from "./users/users-reducers";
+import { currentUser } from "./currentUser/currentUser-reducers";
 import {
   persistReducer,
   persistStore,
@@ -19,13 +20,8 @@ const persistConfig = {
   storage,
 };
 
-const rootReducer = combineReducers({ users });
+const rootReducer = combineReducers({ users, currentUser });
 const persistedReducer = persistReducer(persistConfig, rootReducer);
-
-// export const store = configureStore({
-//   reducer: rootReducer,
-//   devTools: process.env.NODE_ENV === "development",
-// });
 
 export const store = configureStore({
   reducer: persistedReducer,
