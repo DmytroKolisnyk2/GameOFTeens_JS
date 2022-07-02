@@ -1,0 +1,38 @@
+@import "./variables.scss";
+
+.home {
+  background-color: $belge;
+  padding: 1px;
+  padding: 50px 20px;
+}
+.contentWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+.userWrapper {
+  background-color: $brown;
+  width: 400px;
+  padding: 20px;
+  border-radius: 10px;
+}
+.user {
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.link {
+  font-family: $roboto;
+  font-size: 20px;
+  color: black;
+}
+.createBtn {
+    display: block;
+    margin: auto;
+}
+.usersList{
+  margin-bottom: 20px;
+}

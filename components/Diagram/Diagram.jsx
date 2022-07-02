@@ -7,17 +7,18 @@ import {
 } from "chart.js";
 import styles from "./Diagram.module.scss";
 import { PolarArea } from "react-chartjs-2";
+
 ChartJS.register(RadialLinearScale, ArcElement, Tooltip, Legend);
 
 export const initialData = {
   labels: [
-    "Здоров'я, спорт",
-    "Розвиток",
-    "Відпочинок та подорожі",
-    "Творчість та хоббі",
-    "Оточення",
-    "Сім'я",
-    "Кар'єра",
+    "Health and Sport, %",
+    "Progress, %",
+    "Rest and Travels, %",
+    "Hobbies, %",
+    "Friends, %",
+    "Family, %",
+    "Carrier, %",
   ],
   datasets: [
     {
@@ -32,7 +33,6 @@ export const initialData = {
         "rgba(153, 102, 255, 0.8)",
         "rgba(255, 159, 64, 0.8)",
         "rgba(70, 159, 64, 0.8)",
-        "rgba(280, 25, 64, 0.8)",
       ],
       borderWidth: 1,
     },
@@ -53,13 +53,18 @@ const Diagram = ({ data }) => {
   newData.datasets[0].percentData = dataArr;
   newData.datasets[0].data = percentData;
   const indexArray = newData.datasets[0].percentData;
-  const res = dataArr.slice().sort((a, b) => a - b).slice(0, 2);
-  
+  const res = dataArr
+    .slice()
+    .sort((a, b) => a - b)
+    .slice(0, 2);
 
   return (
     <div className={styles.polarArea__wrapper}>
-      <PolarArea data={newData} className={styles.diagram}/>
-      <h2 className={styles.text}>Ви маєте попрацювати із {newData.labels[indexArray.indexOf(res[0])]}  і {newData.labels[indexArray.indexOf(res[1])]}</h2>
+      <PolarArea data={newData} className={styles.diagram} />
+      <h2 className={styles.text}>
+        You have to work with {newData.labels[indexArray.indexOf(res[0])].slice(0,-3)} and {" "}
+        {newData.labels[indexArray.indexOf(res[1])].slice(0,-3)}
+      </h2>
     </div>
   );
 };

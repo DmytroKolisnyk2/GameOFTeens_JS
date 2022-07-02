@@ -1,9 +1,11 @@
 import Head from 'next/head';
+
 import "../styles/reset.scss"
 import '../styles/global.scss';
 import 'react-notifications/lib/notifications.css';
-import Footer from "../components/Footer/Footer";
 
+import Header from '../components/Header/Header';
+import Footer from "../components/Footer/Footer";
 
 import { Provider } from "react-redux";
 import { store, persistor } from "../redux/store";
@@ -12,10 +14,11 @@ import { PersistGate } from "redux-persist/integration/react";
 import NotificationContainer from "react-notifications/lib/NotificationContainer";
 import ScrollTopArrow from "../components/ScrollTopArrow/ScrollTopArrow";
 import NextNProgress from "nextjs-progressbar";
-
+import AboutPage from '../components/AboutPage/AboutPage';
 function MyApp({ Component, pageProps }) {
   return <>
     <Head>
+
       <meta charSet="utf-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <meta name="theme-color" content="#000000" />
@@ -28,12 +31,17 @@ function MyApp({ Component, pageProps }) {
       {Component.title ? <title>{Component.title}</title> : <title>Project</title>}
 
     </Head>
-
     <div id="root-modal"></div>
+
 
     <PersistGate loading={null} persistor={persistor}>
       <Provider store={store}>
-        <Component {...pageProps} />
+        <div className='body'>
+          <Header />
+
+          <Component {...pageProps} />
+          <Footer />
+        </div>
       </Provider>
     </PersistGate>
 
@@ -41,10 +49,8 @@ function MyApp({ Component, pageProps }) {
       color="tomato"
       showOnShallow={true}
     />
-
-    {/* <ScrollTopArrow bgColor="red" /> */}
+    <ScrollTopArrow bgColor="red" />
     <NotificationContainer />
-    <Footer/>
   </>
 }
 

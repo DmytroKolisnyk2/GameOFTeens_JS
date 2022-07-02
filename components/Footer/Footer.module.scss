@@ -1,19 +1,20 @@
-@import '../../styles/variables.scss';
+@import "../../styles/variables.scss";
 
 .footer {
     width: 100vw;
-    padding: 25px;
     background-color: $brown;
     margin: 0 auto;
+    padding: 16px 20px;
 }
 
 .content {
     max-width: 1200px;
     width: 100%;
-    margin: 0 auto 37px auto;
+    margin: 0 auto 10px auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .wrapperLogo {
@@ -25,12 +26,13 @@
 }
 
 .image {
-    width: 68px;
-    height: 68px;
+    width: 58px;
+    height: 58px;
     border-radius: 50%;
 }
 
 .logo {
+    padding-top: 4px;
     text-align: center;
     font-family: $rubic;
     font-weight: 700;
@@ -91,7 +93,7 @@
 }
 
 .wrapperTeam {
-    max-width: 370px;
+    max-width: 270px;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -109,8 +111,7 @@
 
 .wrapperText {
     margin: 0 auto;
-    max-width: 255px;
-    width: 100%;
+    width: fit-content;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -118,12 +119,14 @@
 
 .footerText {
     color: black;
-    font-size: 22px;
+    font-size: 14px;
     font-weight: 700;
     font-family: $arima;
+    margin-right: 5px;
+    padding-top: 4px;
 }
 
 .copyRightIcon {
-    width: 25px;
-    height: 25px;
+    width: 15px;
+    height: 15px;
 }

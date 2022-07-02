@@ -1,0 +1,59 @@
+@import "../../styles/variables.scss";
+.logo_img {
+    width: 50px;
+    border-radius: 50%;
+    margin-right: 30px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    background-color: $brown;
+    padding: 16px 20px;
+}
+.link {
+    font-family: $roboto;
+    color: black;
+    font-size: 20px;
+    margin-right: 20px;
+    cursor: pointer;
+    &Active {
+        color: $purple;
+    }
+}
+.link:hover {
+    color: $purple;
+}
+.user_name {
+    font-family: $roboto;
+    color: black;
+    margin-right: 15px;
+    font-size: 20px;
+}
+.user_img {
+    width: 30px;
+    height: 30px;
+}
+.wrapper_page {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100vw;
+}
+.user_wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.logo_wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
