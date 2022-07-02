@@ -3,11 +3,13 @@ import Diagram from "../../components/Diagram/Diagram";
 import Button from "@mui/material/Button";
 import Arrow from "@mui/icons-material/ArrowBack";
 import styles from "../../styles/result.module.scss";
+import PrivateRoute from "../../components/PrivateRoute/PrivateRoute";
 import { store, persistor } from "../../redux/store.js";
 
 const result = () => {
   const { query, back } = useRouter();
   return (
+
     <div className={styles.results__wrapper}>
       <Button
         className={styles.button}

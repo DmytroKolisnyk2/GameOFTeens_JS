@@ -2,8 +2,8 @@ import Head from 'next/head';
 
 import "../styles/reset.scss"
 import '../styles/global.scss';
-
 import 'react-notifications/lib/notifications.css';
+
 import Header from '../components/Header/Header';
 import Footer from "../components/Footer/Footer";
 
@@ -33,22 +33,22 @@ function MyApp({ Component, pageProps }) {
     </Head>
     <div id="root-modal"></div>
 
-    <div className='body'>
-      <Header />
-      <PersistGate loading={null} persistor={persistor}>
-        <Provider store={store}>
+    <PersistGate loading={null} persistor={persistor}>
+      <Provider store={store}>
+        <div className='body'>
+          <Header />
           <Component {...pageProps} />
-        </Provider>
-      </PersistGate>
+          <Footer />
+        </div>
+      </Provider>
+    </PersistGate>
 
-      <NextNProgress
-        color="tomato"
-        showOnShallow={true}
-      />
-      <ScrollTopArrow bgColor="red" />
-      <NotificationContainer />
-      <Footer />
-    </div>
+    <NextNProgress
+      color="tomato"
+      showOnShallow={true}
+    />
+    <ScrollTopArrow bgColor="red" />
+    <NotificationContainer />
   </>
 }
 
