@@ -8,17 +8,17 @@ import { getCurrentUserName } from "../../redux/currentUser/currentUser-selector
 import { useDispatch } from "react-redux";
 import NotificationManager from "react-notifications/lib/NotificationManager";
 import { deleteCurrentUser } from "../../redux/currentUser/currentUser-actions";
+import SettingsIcon from '@mui/icons-material/Settings';
 import { useRouter } from "next/router";
 import Link from "next/link";
 import { language } from "../../redux/localization/locales-reducers";
 import { useTranslations } from "next-intl";
 
-const Header = () => {
+const Header = ({handleOpenModal}) => {
   const t = useTranslations("Header");
   const { locales } = useRouter();
   const username = useSelector(getCurrentUserName);
   const dispatch = useDispatch();
-
   return (
     <header className={HeaderStyles.header}>
       <div className={HeaderStyles.wrapper_page}>
@@ -40,7 +40,7 @@ const Header = () => {
                 href={"/users"}
                 classes={HeaderStyles.link}
               >
-                Users
+                {t('users')}
               </NavLink>
               {username && (
                 <>
@@ -87,9 +87,15 @@ const Header = () => {
             >
               {t('exit')}
             </Button>
+            <SettingsIcon onClick={handleOpenModal} className={HeaderStyles.icon}/>
           </div>
         ) : (
-          <div>{t('add')}</div>
+          <>
+          <div className={HeaderStyles.user_wrapper}>
+          <span>{t('add')}</span>
+          <SettingsIcon onClick={handleOpenModal} className={HeaderStyles.icon}/>
+          </div>
+          </>
         )}
       </div>
     </header>

@@ -19,6 +19,53 @@
     "result": "result",
     "exit": "Exit",
     "exitNo": "You successfully exited",
-    "add": "Please add user profile"
+    "add": "Please add user profile",
+    "users": "Users"
+  },
+  "Footer": {
+    "team": "Our team :",
+    "rights": "All rights reserved."
+  },
+  "About": {
+    "about": "about this app",
+    "about_text": "Our application is a prototype of the well-known 'Wheel of Life Balance' exercise. In this web application, you evaluate your areas of life with the help of points",
+    "about_title": "Our Features",
+    "multiU_title": "Multi-user application",
+    "multiU_text": "You can use the application from different accounts",
+    "resultI_title": "Instant result",
+    "resultI_text": "Our application will immediately show you the result of your expenses in the form of a balance wheel",
+    "savingA_title": "Automatic saving",
+    "savingA_text": "For convenience, your balance wheel is automatically saved in the new app",
+    "languageC_title": "Language change",
+    "languageC_text": "Our application works in English and Ukrainian, so that everyone can use our application",
+    "add_account": "Add account",
+    "calendar": "Go to the calendar",
+    "language_change": "Language change"
+  },
+  "Users": {
+    "delete": "Delete",
+    "create": "Create",
+    "added": "Current user successfully added",
+    "how": "How it works?",
+    "guide": "To create an account, you need to click the 'create' button, after clicking on this button, a form will appear in which you need to enter your name. To authorize your account, click the button on the right. You can create many accounts. If necessary, you can delete your profile by clicking the delete button. Easy to use!"
+  },
+  "Calendar": {
+    "result": "Generate result",
+    "save": "Save",
+    "mon": "Mon",
+    "tue": "Tue",
+    "wed": "Wed",
+    "thu": "Thu",
+    "fri": "Fri",
+    "sat": "Sat",
+    "sun": "Sun",
+    "health": "Health and Sport",
+    "progress": "Progress",
+    "travels": "Rest and Travels",
+    "hobby": "Hobbies",
+    "friends": "Friends",
+    "family": "Family",
+    "carrier": "Carrier",
+    "error": "You should type only positive numbers :)"
   }
 }
