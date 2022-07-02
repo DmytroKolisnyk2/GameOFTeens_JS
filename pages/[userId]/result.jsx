@@ -8,7 +8,7 @@ import { getCurrentUserData } from "../../redux/currentUser/currentUser-selector
 import { useSelector } from "react-redux";
 
 const result = () => {
-  const { query, back } = useRouter();
+
   let totalSpending = {
     health: 0,
     progress: 0,
