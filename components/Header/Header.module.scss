@@ -21,18 +21,6 @@
     background-color: $lightTheme;
 }
 
-.link {
-    font-family: $roboto;
-    color: black;
-    font-size: 20px;
-    margin-right: 20px;
-    cursor: pointer;
-    transition: 200ms linear;
-    &:hover {
-        color: $purple;
-    }
-}
-
 .user_name {
     font-family: $roboto;
     color: black;
@@ -62,10 +50,6 @@
     color: $lightThemeText;
 }
 
-.active {
-    color: $purple;
-}
-
 .user_img {
     width: 30px;
     height: 30px;
@@ -91,4 +75,23 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.link {
+    font-family: $roboto;
+    color: black;
+    font-size: 20px;
+    margin-right: 20px;
+    cursor: pointer;
+    transition: 200ms linear;
+    border-bottom: 3px solid transparent;
+    // padding-bottom: 2px;
+    &:hover {
+        color: $purple;
+    }
+}
+
+.active {
+    color: $purple;
+    border-color: $purple;
 }
