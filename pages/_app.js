@@ -21,15 +21,18 @@ import en from "../locales/en.json";
 import ukr from "../locales/ukr.json";
 import { useRouter } from "next/router";
 import AboutPage from '../components/AboutPage/AboutPage';
-
+import SettingsModal from '../components/SettingsModal/SettingsModal';
+import {useState} from 'react';
 const messages = {
   en,
   ukr,
 };
-
-
 function MyApp({ Component, pageProps }) {
   const { locales, locale } = useRouter();
+  const [isOpen, setIsOpen] = useState(false);
+  const handleClose = () => {
+    setIsOpen(!isOpen);
+  };
   return <>
     <Head>
 
@@ -56,7 +59,6 @@ function MyApp({ Component, pageProps }) {
         <Provider store={store}>
           <div className='body'>
             <Header />
-
             <Component {...pageProps} />
             <Footer />
           </div>
@@ -69,6 +71,7 @@ function MyApp({ Component, pageProps }) {
     />
     <ScrollTopArrow bgColor="red" />
     <NotificationContainer />
+    <SettingsModal isOpen={isOpen} handleClose={handleClose}/>
   </>
 
 }
