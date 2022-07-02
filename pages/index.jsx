@@ -22,11 +22,11 @@ export default function Home() {
             {users.map((item) => (
               <li key={item.id} className={styles.user}>
                 <Link href={`${item.id}/calendar`}>
-                 <>
-                    <a className={styles.link}>{item.name}</a>
-                    <DeleteIcon />
-                 </>
+                  <a className={styles.link}>{item.name}</a>
                 </Link>
+                <Button color="secondary" variant="outlined" startIcon={<DeleteIcon />}>
+                  Delete
+                </Button>
               </li>
             ))}
           </ul>

@@ -45,9 +45,9 @@ function MyApp({ Component, pageProps }) {
       showOnShallow={true}
     />
 
-    {/* <ScrollTopArrow bgColor="red" /> */}
+    <ScrollTopArrow bgColor="red" />
     <NotificationContainer />
-    {/* <Footer/> */}
+    <Footer/>
   </>
 }
 
