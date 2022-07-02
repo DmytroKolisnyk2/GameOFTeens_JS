@@ -8,7 +8,7 @@ import {
 import styles1 from "../MainPage/MainPage.module.scss";
 import styles from "./Diagram.module.scss";
 import { PolarArea } from "react-chartjs-2";
-import { useTranslations } from 'next-intl';
+import { useTranslations } from "next-intl";
 import Button from "@mui/material/Button";
 import { useRouter } from "next/router";
 import Arrow from "@mui/icons-material/ArrowBack";
@@ -47,7 +47,7 @@ export const initialData = {
 
 const Diagram = ({ data }) => {
   const { query, back } = useRouter();
-  const t = useTranslations('Diagram');
+  const t = useTranslations("Diagram");
   const newData = { ...initialData };
   const dataArr = [];
   for (let item in data) {
@@ -89,7 +89,14 @@ const Diagram = ({ data }) => {
     .slice(0, 2);
 
   return (
-    <div className={setStyle(theme, styles.results__wrapper, styles.themeDark, styles.themeLight)}>
+    <div
+      className={setStyle(
+        theme,
+        styles.results__wrapper,
+        styles.themeDark,
+        styles.themeLight
+      )}
+    >
       <Button
         className={styles.button}
         size="large"
@@ -98,28 +105,26 @@ const Diagram = ({ data }) => {
         startIcon={<Arrow />}
         onClick={() => back()}
       >
-        {t('goBack')}
+        {t("goBack")}
       </Button>
 
       <div>
-      <div className={styles.main_page_wrapper}>
-        <div>
-        <h1 className={styles1.main_page_title}>About your result</h1>
-          <h2 className={styles1.main_page_text}>On this page you can view your result. Below you can view a number of tips for applying your finances</h2>
-        <h2 className={styles.text}>
-
-          {t("advice")} {newData.labels[indexArray.indexOf(res[0])].slice(0,-3)} {t('and')} {" "}
-          {newData.labels[indexArray.indexOf(res[1])].slice(0,-3)}
-        </h2>
+        <div className={styles.main_page_wrapper}>
+          <div>
+            <h1 className={styles1.main_page_title}>{t("about")}</h1>
+            <h2 className={styles1.main_page_text}>{t("about_text")}</h2>
+            <h2 className={styles.text}>
+              {t("advice")}{" "}
+              {newData.labels[indexArray.indexOf(res[0])].slice(0, -3)}{" "}
+              {t("and")}{" "}
+              {newData.labels[indexArray.indexOf(res[1])].slice(0, -3)}
+            </h2>
+          </div>
+          <div className={styles.polarArea__wrapper}>
+            <PolarArea data={newData} className={styles.diagram} />
+          </div>
         </div>
-        <div className={styles.polarArea__wrapper}>
-        <PolarArea data={newData} className={styles.diagram} />
-       
       </div>
-        </div> 
-      
-      </div>
-     
     </div>
   );
 };

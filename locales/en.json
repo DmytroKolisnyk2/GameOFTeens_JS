@@ -11,7 +11,9 @@
     "friends": "Friends",
     "family": "Family",
     "carrier": "Carrier",
-    "goBack": "Go Back"
+    "goBack": "Go Back",
+    "about": "About your result",
+    "about_text": " On this page you can view your result. Below you can view a number of tips for applying your finances"
   },
   "Header": {
     "home": "Home",
@@ -48,7 +50,12 @@
     "create": "Create",
     "added": "Current user successfully added",
     "how": "How it works?",
-    "guide": "To create an account, you need to click the 'create' button, after clicking on this button, a form will appear in which you need to enter your name. To authorize your account, click the button on the right. You can create many accounts. If necessary, you can delete your profile by clicking the delete button. Easy to use!"
+    "guide": "To create an account, you need to click the 'create' button, after clicking on this button, a form will appear in which you need to enter your name. To authorize your account, click the button on the right. You can create many accounts. If necessary, you can delete your profile by clicking the delete button. Easy to use!",
+    "submit": "Submit name of profile",
+    "name": "Name",
+    "add": "Add",
+    "cancel": "Cancel",
+    "error_alredyUsed": "This name is already used"
   },
   "Calendar": {
     "result": "Generate result",
