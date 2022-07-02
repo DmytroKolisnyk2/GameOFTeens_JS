@@ -46,11 +46,20 @@ const Calendar = () => {
                       key={`${day}-${item}`}
                       value={data[day][item]}
                       onChange={({ target }) => {
-                        setData((prev) => {
-                          const newData = JSON.parse(JSON.stringify(prev));
-                          newData[day][item] = +target.value;
-                          return newData;
-                        });
+                          setData((prev) => {
+                            for (const item in prev) {
+                              const element = prev[item];
+                              // console.log(item);
+                              for (const elem in element) {
+                                if (element[elem] === "") {
+                                  element[elem] = 0;
+                                }
+                              }
+                            }
+                            const newData = JSON.parse(JSON.stringify(prev));
+                            newData[day][item] = +target.value;
+                            return newData;
+                          });
                       }}
                       margin="dense"
                       name={`${day}-${item}`}
