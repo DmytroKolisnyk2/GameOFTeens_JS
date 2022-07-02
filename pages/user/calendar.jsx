@@ -10,6 +10,8 @@ import { getUserDataById } from "../../redux/users/user-selectors";
 import { useTranslations } from "next-intl";
 import NotificationManager from "react-notifications/lib/NotificationManager";
 import { getTheme } from "../../redux/theme/theme-selectors";
+import Router from "next/router";
+
 
 const Calendar = () => {
   const t = useTranslations("Calendar");
@@ -92,7 +94,7 @@ const Calendar = () => {
             >
               {t("save")}
             </Button>
-            <Button className={styles.button} color="secondary" type="text" variant="contained">
+            <Button onClick={() => Router.push('/user/result')} className={styles.button} color="secondary" type="text" variant="contained">
               {t("result")}
             </Button>
           </form>
