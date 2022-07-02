@@ -63,7 +63,7 @@ const Header = () => {
             </ul>
           </nav>
         </div>
-        {[...locales].sort().map((local) => (
+        {/* {[...locales].sort().map((local) => (
           <Link
             className={HeaderStyles.link}
             key={local}
@@ -72,7 +72,7 @@ const Header = () => {
           >
             {local}
           </Link>
-        ))}
+        ))} */}
         {username ? (
           <div className={HeaderStyles.user_wrapper}>
             <p className={HeaderStyles.user_name}>{username}</p>

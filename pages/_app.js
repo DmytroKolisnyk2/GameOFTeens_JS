@@ -3,7 +3,7 @@ import Head from "next/head";
 import "../styles/reset.scss";
 import "../styles/global.scss";
 import "react-notifications/lib/notifications.css";
-
+import MainPage from "../components/MainPage/MainPage";
 import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
 
@@ -56,7 +56,7 @@ function MyApp({ Component, pageProps }) {
         <Provider store={store}>
           <div className='body'>
             <Header />
-
+            <MainPage/>
             <Component {...pageProps} />
             <Footer />
           </div>
