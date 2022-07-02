@@ -58,7 +58,7 @@ function MyApp({ Component, pageProps }) {
       <PersistGate loading={null} persistor={persistor}>
         <Provider store={store}>
           <div className='body'>
-            <Header />
+            <Header handleOpenModal={setIsOpen} />
             <Component {...pageProps} />
             <Footer />
           </div>
