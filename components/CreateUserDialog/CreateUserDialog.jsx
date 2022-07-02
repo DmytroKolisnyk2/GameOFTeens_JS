@@ -10,8 +10,10 @@ import { useDispatch } from "react-redux";
 import { getUserList } from "../../redux/users/user-selectors";
 import { useSelector } from "react-redux";
 import NotificationManager from "react-notifications/lib/NotificationManager";
+import {useTranslations} from "next-intl"
 
 export default function CreateUserDialog({ open, handleClose }) {
+  const t = useTranslations("Users")
   const [input, setInput] = useState("");
   const dispatch = useDispatch();
   const users = useSelector(getUserList);
@@ -20,13 +22,13 @@ export default function CreateUserDialog({ open, handleClose }) {
 
   return (
     <Dialog open={open}>
-      <DialogTitle>Submit name of profile</DialogTitle>
+      <DialogTitle>{t('submit')}</DialogTitle>
       <DialogContent>
         <TextField
           autoFocus
           margin="dense"
           id="name"
-          label="name"
+          label={t('name')}
           type="text"
           fullWidth
           variant="outlined"
@@ -35,18 +37,18 @@ export default function CreateUserDialog({ open, handleClose }) {
         />
       </DialogContent>
       <DialogActions>
-        <Button onClick={() => handleClose()}>Cancel</Button>
+        <Button onClick={() => handleClose()}>{t('cancel')}</Button>
         <Button
           onClick={() => {
             if (isValidName()) {
               dispatch(addUser(input));
               handleClose();
             } else {
-              NotificationManager.error("Name already used");
+              NotificationManager.error(t('error_alredyUsed'));
             }
           }}
         >
-          Add
+          {t('add')}
         </Button>
       </DialogActions>
     </Dialog>
