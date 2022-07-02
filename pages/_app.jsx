@@ -59,7 +59,7 @@ function MyApp({ Component, pageProps }) {
         <Provider store={store}>
           <div className='body'>
             <Header handleOpenModal={setIsOpen} />
-            <Component {...pageProps} />
+            <Component setIsOpen={setIsOpen} {...pageProps} />
             <Footer />
             <SettingsModal isOpen={Boolean(isOpen)} handleClose={handleClose}/>
           </div>
