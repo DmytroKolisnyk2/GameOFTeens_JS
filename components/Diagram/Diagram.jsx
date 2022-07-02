@@ -5,6 +5,7 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
+import styles1 from "../MainPage/MainPage.module.scss";
 import styles from "./Diagram.module.scss";
 import { PolarArea } from "react-chartjs-2";
 import { useTranslations } from 'next-intl';
@@ -99,14 +100,26 @@ const Diagram = ({ data }) => {
       >
         {t('goBack')}
       </Button>
-      <h1 className={setStyle(theme, styles.result, styles.darkThemeText, styles.lightThemeText)}>{t('result')}</h1>
-      <div className={styles.polarArea__wrapper}>
-        <PolarArea data={newData} className={styles.diagram} />
-        <h2 className={setStyle(theme, styles.text, styles.darkThemeText, styles.lightThemeText)}>
+
+      <div>
+      <div className={styles.main_page_wrapper}>
+        <div>
+        <h1 className={styles1.main_page_title}>About your result</h1>
+          <h2 className={styles1.main_page_text}>On this page you can view your result. Below you can view a number of tips for applying your finances</h2>
+        <h2 className={styles.text}>
+
           {t("advice")} {newData.labels[indexArray.indexOf(res[0])].slice(0,-3)} {t('and')} {" "}
           {newData.labels[indexArray.indexOf(res[1])].slice(0,-3)}
         </h2>
+        </div>
+        <div className={styles.polarArea__wrapper}>
+        <PolarArea data={newData} className={styles.diagram} />
+       
       </div>
+        </div> 
+      
+      </div>
+     
     </div>
   );
 };

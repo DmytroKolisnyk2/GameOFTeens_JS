@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import Diagram from "../../components/Diagram/Diagram";
 import styles from "../../styles/result.module.scss";
 import PrivateRoute from "../../components/PrivateRoute/PrivateRoute";
-
+// import AboutResult from "../../components/AboutResult/AboutResult"
 import { useSelector } from "react-redux";
 import { getUserDataById } from "../../redux/users/user-selectors";
 import { getCurrentUserId } from "../../redux/currentUser/currentUser-selectors";
@@ -52,7 +52,11 @@ const result = () => {
   return (
     <section className={setStyle(theme, styles.results__wrapper, styles.themeDark, styles.themeLight)}>
       <PrivateRoute>
+        <div className={styles.main_wrapper}>
+  
         <Diagram data={sum()} />
+        
+        </div>
       </PrivateRoute>
     </section>
   );
