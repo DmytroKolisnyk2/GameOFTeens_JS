@@ -7,7 +7,7 @@
 }
 .contentWrapper {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   max-width: 800px;
   margin: 0 auto;
@@ -28,4 +28,11 @@
   font-family: $roboto;
   font-size: 20px;
   color: black;
+}
+.createBtn {
+    display: block;
+    margin: auto;
+}
+.usersList{
+  margin-bottom: 20px;
 }
