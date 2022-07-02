@@ -7,12 +7,15 @@ import {
 } from "chart.js";
 import styles from "./Diagram.module.scss";
 import { PolarArea } from "react-chartjs-2";
-
+import { useTranslations } from 'next-intl';
+import Button from "@mui/material/Button";
+import { useRouter } from "next/router";
+import Arrow from "@mui/icons-material/ArrowBack";
 ChartJS.register(RadialLinearScale, ArcElement, Tooltip, Legend);
 
 export const initialData = {
   labels: [
-    "Health and Sport, %",
+    `Health and Sport, %`,
     "Progress, %",
     "Rest and Travels, %",
     "Hobbies, %",
@@ -40,6 +43,8 @@ export const initialData = {
 };
 
 const Diagram = ({ data }) => {
+  const { query, back } = useRouter();
+  const t = useTranslations('Diagram');
   const newData = { ...initialData };
   const dataArr = [];
   for (let item in data) {
@@ -51,6 +56,16 @@ const Diagram = ({ data }) => {
     return percent;
   });
   newData.datasets[0].percentData = dataArr;
+  newData.labels = [
+    `${t("health")}, %`,
+    `${t("progress")}, %`,
+    `${t("rest")}, %`,
+    `${t("hobby")}, %`,
+    `${t("friends")}, %`,
+    `${t("family")}, %`,
+    `${t("carrier")}, %`,
+  ];
+  // console.log(newData.labels)
   newData.datasets[0].data = percentData;
   const indexArray = newData.datasets[0].percentData;
   const res = dataArr
@@ -59,12 +74,25 @@ const Diagram = ({ data }) => {
     .slice(0, 2);
 
   return (
-    <div className={styles.polarArea__wrapper}>
-      <PolarArea data={newData} className={styles.diagram} />
-      <h2 className={styles.text}>
-        You have to work with {newData.labels[indexArray.indexOf(res[0])].slice(0,-3)} and {" "}
-        {newData.labels[indexArray.indexOf(res[1])].slice(0,-3)}
-      </h2>
+    <div className={styles.results__wrapper}>
+      <Button
+        className={styles.button}
+        size="large"
+        color="secondary"
+        variant="contained"
+        startIcon={<Arrow />}
+        onClick={() => back()}
+      >
+        {t('goBack')}
+      </Button>
+      <h1 className={styles.result}>{t('result')}</h1>
+      <div className={styles.polarArea__wrapper}>
+        <PolarArea data={newData} className={styles.diagram} />
+        <h2 className={styles.text}>
+          {t("advice")} {newData.labels[indexArray.indexOf(res[0])].slice(0,-3)} {t('and')} {" "}
+          {newData.labels[indexArray.indexOf(res[1])].slice(0,-3)}
+        </h2>
+      </div>
     </div>
   );
 };

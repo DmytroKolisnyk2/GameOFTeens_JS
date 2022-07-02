@@ -2,7 +2,6 @@ import { useState } from "react";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import styles from "../../styles/calendar.module.scss";
-import NotificationManager from "react-notifications/lib/NotificationManager";
 import PrivateRoute from "../../components/PrivateRoute/PrivateRoute";
 import { useDispatch, useSelector } from "react-redux";
 import { updateData } from "../../redux/users/data/data-actions";

@@ -1,0 +1,67 @@
+@import '../../styles/variables.scss';
+
+.wrapperModal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal {
+    max-width: 480px;
+    width: 100%;
+    background-color: $brown;
+    border-radius: 12px;
+    padding: 20px 40px;
+}
+
+.modalTitle {
+    font-family: $arima;
+    font-size: 26px;
+    font-weight: 600;
+    color: black;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.wrapperSelect {
+    width: 60%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.selectTheme {
+    width: 100%;
+    display: block;
+    margin-bottom: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.labelContent {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.labelTitle {
+    font-family: $arima;
+    font-size: 20px;
+    font-weight: 600;
+    color: black;
+    text-align: center;
+}
+
+.selectLanguage {
+    width: 100%;
+    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
