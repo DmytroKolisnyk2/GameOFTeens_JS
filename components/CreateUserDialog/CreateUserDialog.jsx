@@ -22,10 +22,6 @@ export default function CreateUserDialog({ open, handleClose }) {
     <Dialog open={open}>
       <DialogTitle>Submit name of profile</DialogTitle>
       <DialogContent>
-        {/* <DialogContentText>
-            To subscribe to this website, please enter your email address here. We will send
-            updates occasionally.
-          </DialogContentText> */}
         <TextField
           autoFocus
           margin="dense"
@@ -39,6 +35,7 @@ export default function CreateUserDialog({ open, handleClose }) {
         />
       </DialogContent>
       <DialogActions>
+        <Button onClick={() => handleClose()}>Cancel</Button>
         <Button
           onClick={() => {
             if (isValidName()) {
