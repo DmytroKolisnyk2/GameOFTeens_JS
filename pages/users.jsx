@@ -11,15 +11,20 @@ import { removeUser } from "../redux/users/data/data-actions";
 import { addCurrentUser } from "../redux/currentUser/currentUser-actions";
 import { useDispatch } from "react-redux";
 import NotificationManager from "react-notifications/lib/NotificationManager";
+import { useTranslations } from "next-intl";
 
 export default function users() {
+  const t = useTranslations("Users");
   const [openDialog, setOpenDialog] = useState(false);
   const users = useSelector(getUserList);
   const dispatch = useDispatch();
   return (
     <section className={styles.home}>
       <div className={styles.contentWrapper}>
-        <CreateUserDialog open={openDialog} handleClose={() => setOpenDialog(false)} />
+        <CreateUserDialog
+          open={openDialog}
+          handleClose={() => setOpenDialog(false)}
+        />
         <div className={styles.userWrapper}>
           <ul className={styles.usersList}>
             {users.map((item) => (
@@ -34,12 +39,14 @@ export default function users() {
                     variant="outlined"
                     startIcon={<DeleteIcon />}
                   >
-                    Delete
+                    {t("delete")}
                   </Button>
                   <Button
                     onClick={() => {
                       dispatch(addCurrentUser(item));
-                      NotificationManager.success("Current user successfully added");
+                      NotificationManager.success(
+                        t("added")
+                      );
                     }}
                     color="secondary"
                     variant="outlined"
@@ -55,7 +62,7 @@ export default function users() {
             color="secondary"
             variant="contained"
           >
-            Create
+            {t('create')}
           </Button>
         </div>
       </div>
