@@ -4,13 +4,13 @@
     width: 100vw;
     margin: 0 auto;
     background-color: $belge;
-    padding: 35px 25px 55px 25px;
 }
 .calendar {
     display: grid;
     gap: 20px;
     grid-template: repeat(1, auto) / repeat(7, auto);
     margin: 0 auto 20px auto;
+    padding: 35px 25px 55px 25px;
 }
 
 .column {
