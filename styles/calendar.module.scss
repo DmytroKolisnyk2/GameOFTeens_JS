@@ -39,3 +39,19 @@
     margin: 15px auto;
     display: block;
 }
+
+.themeDark {
+    background-color: $darkThemeMain;
+}
+
+.themeLight {
+    background-color: $lightThemeMain;
+}
+
+.darkThemeText {
+    color: $darkThemeText;
+}
+
+.lightThemeText {
+    color: $lightThemeText;
+}

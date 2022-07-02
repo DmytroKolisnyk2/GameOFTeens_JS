@@ -42,6 +42,25 @@
     }
 }
 
+.link {
+    font-family: $roboto;
+    color: black;
+    font-size: 20px;
+    margin-right: 20px;
+    cursor: pointer;
+    transition: 200ms linear;
+    border-bottom: 3px solid transparent;
+    // padding-bottom: 2px;
+    &:hover {
+        color: $purple;
+    }
+}
+
+.active {
+    color: $purple !important;
+    border-color: $purple;
+}
+
 .darkThemeLink {
     color: $darkThemeText;
 }
@@ -75,23 +94,4 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
-
-.link {
-    font-family: $roboto;
-    color: black;
-    font-size: 20px;
-    margin-right: 20px;
-    cursor: pointer;
-    transition: 200ms linear;
-    border-bottom: 3px solid transparent;
-    // padding-bottom: 2px;
-    &:hover {
-        color: $purple;
-    }
-}
-
-.active {
-    color: $purple;
-    border-color: $purple;
 }
