@@ -7,8 +7,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { updateData } from "../../redux/users/data/data-actions";
 import { getCurrentUserId } from "../../redux/currentUser/currentUser-selectors";
 import { getUserDataById } from "../../redux/users/user-selectors";
+import { useTranslations } from "next-intl";
 
 const Calendar = () => {
+  const t = useTranslations("Calendar");
   const dispatch = useDispatch();
 
   const userId = useSelector(getCurrentUserId);
@@ -21,11 +23,13 @@ const Calendar = () => {
       dispatch(updateData({ id: userId, data }));
       return;
     }
-    NotificationManager.error("You should type only positive numbers :)");
+    NotificationManager.error(t('error'));
   };
 
   const isValidData = () =>
-    Object.keys(data).every((day) => Object.values(data[day]).every((item) => item >= 0));
+    Object.keys(data).every((day) =>
+      Object.values(data[day]).every((item) => item >= 0)
+    );
 
   return (
     <section className={styles.calendarPage}>
@@ -65,10 +69,15 @@ const Calendar = () => {
               color="secondary"
               variant="outlined"
             >
-              Save
+              {t("save")}
             </Button>
-            <Button className={styles.button} color="secondary" type="text" variant="contained">
-              Generate result
+            <Button
+              className={styles.button}
+              color="secondary"
+              type="text"
+              variant="contained"
+            >
+             {t("result")}
             </Button>
           </form>
         )}
