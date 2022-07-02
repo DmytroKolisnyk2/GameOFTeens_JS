@@ -8,9 +8,9 @@
 }
 .calendar {
     display: grid;
-    gap: 25px;
+    gap: 20px;
     grid-template: repeat(1, auto) / repeat(7, auto);
-    margin-bottom: 20px;
+    margin: 0 auto 20px auto;
 }
 
 .column {
@@ -32,5 +32,10 @@
 
 .button {
     margin: 0 auto;
+    display: block;
+}
+
+.submitButton {
+    margin: 15px auto;
     display: block;
 }
