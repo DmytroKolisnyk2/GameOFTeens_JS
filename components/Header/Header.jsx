@@ -1,8 +1,18 @@
 import NavLink from "../NavLink/NavLink";
 import HeaderStyles from "./Header.module.scss";
 import Logo from "../../img/logo.jpg";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import LogoutIcon from "@mui/icons-material/Logout";
+import { Button } from "@mui/material";
+import { useSelector } from "react-redux";
+import { getCurrentUserName } from "../../redux/currentUser/currentUser-selectors";
+import { useDispatch } from "react-redux";
+import NotificationManager from "react-notifications/lib/NotificationManager";
+import { deleteCurrentUser } from "../../redux/currentUser/currentUser-actions";
+
 const Header = () => {
+  const username = useSelector(getCurrentUserName);
+  const dispatch = useDispatch();
+
   return (
     <header className={HeaderStyles.header}>
       <div className={HeaderStyles.wrapper_page}>
@@ -18,27 +28,46 @@ const Header = () => {
               >
                 Home
               </NavLink>
-              <NavLink
-                activeClass={HeaderStyles.linkActive}
-                href={"/[userId]ds/calendar"}
-                classes={HeaderStyles.link}
-              >
-                Calendar
-              </NavLink>
-              <NavLink
-                activeClass={HeaderStyles.linkActive}
-                href={"/[userId]ds/result"}
-                classes={HeaderStyles.link}
-              >
-                Result
-              </NavLink>
+              {username && (
+                <>
+                  <NavLink
+                    activeClass={HeaderStyles.linkActive}
+                    href={"/[userId]ds/calendar"}
+                    classes={HeaderStyles.link}
+                  >
+                    Calendar
+                  </NavLink>
+                  <NavLink
+                    activeClass={HeaderStyles.linkActive}
+                    href={"/[userId]ds/result"}
+                    classes={HeaderStyles.link}
+                  >
+                    Result
+                  </NavLink>
+                </>
+              )}
             </ul>
           </nav>
         </div>
-        <div className={HeaderStyles.user_wrapper}>
-          <p className={HeaderStyles.user_name}>User</p>
-          <AccountCircleIcon className={HeaderStyles.user_img} />
-        </div>
+
+        {username ? (
+          <div className={HeaderStyles.user_wrapper}>
+            <p className={HeaderStyles.user_name}>{username}</p>
+            <Button
+              onClick={() => {
+                dispatch(deleteCurrentUser());
+                NotificationManager.success("You successfully exit");
+              }}
+              color="secondary"
+              variant="outlined"
+              endIcon={<LogoutIcon />}
+            >
+              Exit
+            </Button>
+          </div>
+        ) : (
+          <div>Please add user profile</div>
+        )}
       </div>
     </header>
   );

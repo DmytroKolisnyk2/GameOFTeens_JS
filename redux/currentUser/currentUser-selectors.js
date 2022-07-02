@@ -1,1 +1,1 @@
-export const getCurrentUserName = (state) => state.currentUser.name;
+export const getCurrentUserName = (state) => state.currentUser?.name;
