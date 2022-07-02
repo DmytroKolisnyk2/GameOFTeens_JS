@@ -62,14 +62,6 @@ const Calendar = () => {
                       value={data[day][item]}
                       onChange={({ target }) => {
                         setData((prev) => {
-                          // for (const item in prev) {
-                          //   const element = prev[item];
-                          //   for (const elem in element) {
-                          //     if (element[elem] === "") {
-                          //       element[elem] = 0;
-                          //     }
-                          //   }
-                          // }
                           const newData = JSON.parse(JSON.stringify(prev));
                           newData[day][item] = +target.value;
                           return newData;
