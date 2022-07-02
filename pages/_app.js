@@ -48,6 +48,7 @@ function MyApp({ Component, pageProps }) {
     <ScrollTopArrow bgColor="red" />
     <NotificationContainer />
     <Footer/>
+ 
   </>
 }
 
