@@ -7,6 +7,14 @@
     padding: 16px 20px;
 }
 
+.themeDark {
+    background-color: $darkTheme;
+}
+
+.themeLight {
+    background-color: $lightTheme;
+}
+
 .content {
     max-width: 1200px;
     width: 100%;
@@ -129,4 +137,13 @@
 .copyRightIcon {
     width: 15px;
     height: 15px;
+}
+
+
+.darkThemeText {
+    color: $darkThemeText;
+}
+
+.lightThemeText {
+    color: $lightThemeText;
 }

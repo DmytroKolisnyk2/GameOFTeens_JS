@@ -9,10 +9,23 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import CopyrightIcon from "@mui/icons-material/Copyright";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GitHubIcon from "@mui/icons-material/GitHub";
+import {getTheme} from '../../redux/theme/theme-selectors';
+import { useSelector } from "react-redux";
 
 const Footer = () => {
+  const theme = useSelector(getTheme);
+  const setStyle = (theme, style, darkTheme, lightTheme) => {
+    switch (theme) {
+      case 'default':
+      return style
+      case 'dark':
+      return `${style} ${darkTheme}`
+      case 'light':
+      return `${style} ${lightTheme}`
+    }
+  };
   return (
-    <footer className={styles.footer}>
+    <footer className={setStyle(theme, styles.footer, styles.themeDark, styles.themeLight)}>
       <div className={styles.content}>
         <a target="_blank" href="https://github.com/HOPEteam2021" className={styles.wrapperLogo}>
           <Image
@@ -22,10 +35,10 @@ const Footer = () => {
             src={logoImg.src}
             alt="logo__team"
           />
-          <h2 className={styles.logo}>HOPEteam</h2>
+          <h2 className={setStyle(theme, styles.logo, styles.darkThemeText, styles.lightThemeText)}>HOPEteam</h2>
         </a>
         <div className={styles.wrapperTeam}>
-          <h3 className={styles.teamTitle}>Our Team :</h3>
+          <h3 className={setStyle(theme, styles.teamTitle, styles.darkThemeText, styles.lightThemeText)}>Our Team :</h3>
           <div className={styles.wrapperLinks}>
             <a
               className={styles.link}
@@ -91,8 +104,8 @@ const Footer = () => {
         </div>
       </div>
       <div className={styles.wrapperText}>
-        <h4 className={styles.footerText}>All rights are reserved.</h4>
-        <CopyrightIcon className={styles.copyRightIcon} />
+        <h4 className={setStyle(theme, styles.footerText, styles.darkThemeText, styles.lightThemeText)}>All rights are reserved.</h4>
+        <CopyrightIcon className={setStyle(theme, styles.copyRightIcon, styles.darkThemeText, styles.lightThemeText)} />
       </div>
     </footer>
   );

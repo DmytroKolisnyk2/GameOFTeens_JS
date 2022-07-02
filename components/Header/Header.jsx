@@ -13,48 +13,60 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import { language } from "../../redux/localization/locales-reducers";
 import { useTranslations } from "next-intl";
+import {getTheme} from '../../redux/theme/theme-selectors';
 
 const Header = ({handleOpenModal}) => {
   const t = useTranslations("Header");
   const { locales } = useRouter();
   const username = useSelector(getCurrentUserName);
   const dispatch = useDispatch();
+  const theme = useSelector(getTheme);
+  const setStyle = (theme, style, darkTheme, lightTheme) => {
+    switch (theme) {
+      case 'default':
+      return style
+      case 'dark':
+      return `${style} ${darkTheme}`
+      case 'light':
+      return `${style} ${lightTheme}`
+    }
+  };
   return (
-    <header className={HeaderStyles.header}>
+    <header className={setStyle(theme, HeaderStyles.header, HeaderStyles.themeDark, HeaderStyles.themeLight)}>
       <div className={HeaderStyles.wrapper_page}>
         <div className={HeaderStyles.logo_wrapper}>
           <img className={HeaderStyles.logo_img} src={Logo.src} alt="Logo" />
           <nav className={HeaderStyles.navigation}>
             <ul className={HeaderStyles.wrapper}>
               <NavLink
-                activeClass={HeaderStyles.linkActive}
+                activeClass={HeaderStyles.active}
                 exact
                 href={"/"}
-                classes={HeaderStyles.link}
+                classes={setStyle(theme, HeaderStyles.link, HeaderStyles.darkThemeLink, HeaderStyles.lightThemeLink)}
               >
                 {t('home')}
               </NavLink>
               <NavLink
-                activeClass={HeaderStyles.linkActive}
+                activeClass={HeaderStyles.active}
                 exact
                 href={"/users"}
-                classes={HeaderStyles.link}
+                classes={setStyle(theme, HeaderStyles.link, HeaderStyles.darkThemeLink, HeaderStyles.lightThemeLink)}
               >
                 Users
               </NavLink>
               {username && (
                 <>
                   <NavLink
-                    activeClass={HeaderStyles.linkActive}
+                    activeClass={HeaderStyles.active}
                     href={"/[userId]ds/calendar"}
-                    classes={HeaderStyles.link}
+                    classes={setStyle(theme, HeaderStyles.link, HeaderStyles.darkThemeLink, HeaderStyles.lightThemeLink)}
                   >
                     {t('calendar')}
                   </NavLink>
                   <NavLink
-                    activeClass={HeaderStyles.linkActive}
+                    activeClass={HeaderStyles.active}
                     href={"/[userId]ds/result"}
-                    classes={HeaderStyles.link}
+                    classes={setStyle(theme, HeaderStyles.link, HeaderStyles.darkThemeLink, HeaderStyles.lightThemeLink)}
                   >
                     {t('result')}
                   </NavLink>
@@ -63,19 +75,9 @@ const Header = ({handleOpenModal}) => {
             </ul>
           </nav>
         </div>
-        {[...locales].sort().map((local) => (
-          <Link
-            className={HeaderStyles.link}
-            key={local}
-            href="/"
-            locale={local}
-          >
-            {local}
-          </Link>
-        ))}
         {username ? (
           <div className={HeaderStyles.user_wrapper}>
-            <p className={HeaderStyles.user_name}>{username}</p>
+            <p className={setStyle(theme, HeaderStyles.user_name, HeaderStyles.darkThemeLink, HeaderStyles.lightThemeLink)}>{username}</p>
             <Button
               onClick={() => {
                 dispatch(deleteCurrentUser());
@@ -92,7 +94,7 @@ const Header = ({handleOpenModal}) => {
         ) : (
           <>
           <div className={HeaderStyles.user_wrapper}>
-          <span>{t('add')}</span>
+          <span className={setStyle(theme, HeaderStyles.link, HeaderStyles.darkThemeLink, HeaderStyles.lightThemeLink)}>{t('add')}</span>
           <SettingsIcon onClick={handleOpenModal} className={HeaderStyles.icon}/>
           </div>
           </>
