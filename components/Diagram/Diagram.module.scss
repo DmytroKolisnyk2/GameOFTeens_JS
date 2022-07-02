@@ -3,25 +3,28 @@
 .polarArea__wrapper {
   width: 500px;
   margin: 0 auto;
+  
 }
 .diagram {
   margin-bottom: 25px;
 }
 
 .text {
-  margin-bottom: 50px;
+  padding-bottom: 50px;
   font-family: $roboto;
-  text-align: center;
+  text-align: left;
   color: black;
 }
-
 .results__wrapper {
   background-color: $belge;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 10px;
-  height: 100%;
+  @media (max-width: 1200px) {  
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    padding-top: 100px;
+  }
+
 }
 
 .result {
@@ -38,4 +41,18 @@
   left: 25px;
   top: 120px;
   // background-color: $purple;
+}
+.main_page_title{
+  font-size: 50px;
+  font-family: $arima;
+  padding-bottom: 20px;
+  text-align: left;
+ 
+}
+.main_page_text{
+  font-size: 18px;
+  font-family: $roboto;
+  text-align: left;
+  padding-bottom: 30px;
+ 
 }
