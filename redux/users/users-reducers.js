@@ -28,14 +28,16 @@ export const users = createReducer([], {
     },
   ],
 
-  [removeUser]: (state, { payload }) =>
-    state.filter((item) => item.id !== payload),
+  [removeUser]: (state, { payload }) => {
+    NotificationManager.success('Calendar successfully deleted')
+    return state.filter((item) => item.id !== payload)
+  },
 
   [updateData]: (state, { payload }) => {
     const updateUser = state.find((item) => item.id === payload.id);
     updateUser.data = payload.data;
     NotificationManager.success('Calendar successfully saved')
-    return void([
+    return void ([
       ...state.filter((item) => item.id !== payload.id), updateUser
     ])
   }
