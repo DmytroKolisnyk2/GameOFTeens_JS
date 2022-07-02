@@ -8,14 +8,14 @@ import { getCurrentUserName } from "../../redux/currentUser/currentUser-selector
 import { useDispatch } from "react-redux";
 import NotificationManager from "react-notifications/lib/NotificationManager";
 import { deleteCurrentUser } from "../../redux/currentUser/currentUser-actions";
-import SettingsIcon from '@mui/icons-material/Settings';
+import SettingsIcon from "@mui/icons-material/Settings";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import { language } from "../../redux/localization/locales-reducers";
 import { useTranslations } from "next-intl";
-import {getTheme} from '../../redux/theme/theme-selectors';
+import { getTheme } from "../../redux/theme/theme-selectors";
 
-const Header = ({handleOpenModal}) => {
+const Header = ({ handleOpenModal }) => {
   const t = useTranslations("Header");
   const { locales } = useRouter();
   const username = useSelector(getCurrentUserName);
@@ -23,16 +23,23 @@ const Header = ({handleOpenModal}) => {
   const theme = useSelector(getTheme);
   const setStyle = (theme, style, darkTheme, lightTheme) => {
     switch (theme) {
-      case 'default':
-      return style
-      case 'dark':
-      return `${style} ${darkTheme}`
-      case 'light':
-      return `${style} ${lightTheme}`
+      case "default":
+        return style;
+      case "dark":
+        return `${style} ${darkTheme}`;
+      case "light":
+        return `${style} ${lightTheme}`;
     }
   };
   return (
-    <header className={setStyle(theme, HeaderStyles.header, HeaderStyles.themeDark, HeaderStyles.themeLight)}>
+    <header
+      className={setStyle(
+        theme,
+        HeaderStyles.header,
+        HeaderStyles.themeDark,
+        HeaderStyles.themeLight
+      )}
+    >
       <div className={HeaderStyles.wrapper_page}>
         <div className={HeaderStyles.logo_wrapper}>
           <img className={HeaderStyles.logo_img} src={Logo.src} alt="Logo" />
@@ -42,33 +49,53 @@ const Header = ({handleOpenModal}) => {
                 activeClass={HeaderStyles.active}
                 exact
                 href={"/"}
-                classes={setStyle(theme, HeaderStyles.link, HeaderStyles.darkThemeLink, HeaderStyles.lightThemeLink)}
+                classes={setStyle(
+                  theme,
+                  HeaderStyles.link,
+                  HeaderStyles.darkThemeLink,
+                  HeaderStyles.lightThemeLink
+                )}
               >
-                {t('home')}
+                {t("home")}
               </NavLink>
               <NavLink
                 activeClass={HeaderStyles.active}
                 exact
                 href={"/users"}
-                classes={setStyle(theme, HeaderStyles.link, HeaderStyles.darkThemeLink, HeaderStyles.lightThemeLink)}
+                classes={setStyle(
+                  theme,
+                  HeaderStyles.link,
+                  HeaderStyles.darkThemeLink,
+                  HeaderStyles.lightThemeLink
+                )}
               >
-                {t('users')}
+                {t("users")}
               </NavLink>
               {username && (
                 <>
                   <NavLink
                     activeClass={HeaderStyles.active}
-                    href={"/[userId]ds/calendar"}
-                    classes={setStyle(theme, HeaderStyles.link, HeaderStyles.darkThemeLink, HeaderStyles.lightThemeLink)}
+                    href={"/user/calendar"}
+                    classes={setStyle(
+                      theme,
+                      HeaderStyles.link,
+                      HeaderStyles.darkThemeLink,
+                      HeaderStyles.lightThemeLink
+                    )}
                   >
-                    {t('calendar')}
+                    {t("calendar")}
                   </NavLink>
                   <NavLink
                     activeClass={HeaderStyles.active}
-                    href={"/[userId]ds/result"}
-                    classes={setStyle(theme, HeaderStyles.link, HeaderStyles.darkThemeLink, HeaderStyles.lightThemeLink)}
+                    href={"/user/result"}
+                    classes={setStyle(
+                      theme,
+                      HeaderStyles.link,
+                      HeaderStyles.darkThemeLink,
+                      HeaderStyles.lightThemeLink
+                    )}
                   >
-                    {t('result')}
+                    {t("result")}
                   </NavLink>
                 </>
               )}
@@ -77,26 +104,52 @@ const Header = ({handleOpenModal}) => {
         </div>
         {username ? (
           <div className={HeaderStyles.user_wrapper}>
-            <p className={setStyle(theme, HeaderStyles.user_name, HeaderStyles.darkThemeLink, HeaderStyles.lightThemeLink)}>{username}</p>
+            <p
+              className={setStyle(
+                theme,
+                HeaderStyles.user_name,
+                HeaderStyles.darkThemeLink,
+                HeaderStyles.lightThemeLink
+              )}
+            >
+              {username}
+            </p>
             <Button
               onClick={() => {
                 dispatch(deleteCurrentUser());
-                NotificationManager.success(t('exitNo'));
+                NotificationManager.success(t("exitNo"));
               }}
               color="secondary"
               variant="outlined"
               endIcon={<LogoutIcon />}
             >
-              {t('exit')}
+              {t("exit")}
             </Button>
-            <SettingsIcon onClick={handleOpenModal} className={HeaderStyles.icon}/>
+            <SettingsIcon onClick={handleOpenModal} className={HeaderStyles.icon} />
           </div>
         ) : (
           <>
-          <div className={HeaderStyles.user_wrapper}>
-          <span className={setStyle(theme, HeaderStyles.link, HeaderStyles.darkThemeLink, HeaderStyles.lightThemeLink)}>{t('add')}</span>
-          <SettingsIcon onClick={handleOpenModal} className={setStyle(theme, HeaderStyles.icon, HeaderStyles.darkThemeLink, HeaderStyles.lightThemeLink)}/>
-          </div>
+            <div className={HeaderStyles.user_wrapper}>
+              <span
+                className={setStyle(
+                  theme,
+                  HeaderStyles.link,
+                  HeaderStyles.darkThemeLink,
+                  HeaderStyles.lightThemeLink
+                )}
+              >
+                {t("add")}
+              </span>
+              <SettingsIcon
+                onClick={handleOpenModal}
+                className={setStyle(
+                  theme,
+                  HeaderStyles.icon,
+                  HeaderStyles.darkThemeLink,
+                  HeaderStyles.lightThemeLink
+                )}
+              />
+            </div>
           </>
         )}
       </div>
