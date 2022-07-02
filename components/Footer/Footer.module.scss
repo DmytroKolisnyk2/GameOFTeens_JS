@@ -5,6 +5,7 @@
     background-color: $brown;
     margin: 0 auto;
     padding: 16px 20px;
+    transition: 200ms linear;
 }
 
 .themeDark {
@@ -46,6 +47,7 @@
     font-weight: 700;
     font-size: 32px;
     color: black;
+    transition: 200ms linear;
 }
 
 .avatar {
@@ -115,6 +117,7 @@
     font-family: $arima;
     color: black;
     margin-bottom: 10px;
+    transition: 200ms linear;
 }
 
 .wrapperText {
@@ -132,6 +135,7 @@
     font-family: $arima;
     margin-right: 5px;
     padding-top: 4px;
+    transition: 200ms linear;
 }
 
 .copyRightIcon {

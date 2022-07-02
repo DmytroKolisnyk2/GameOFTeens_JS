@@ -95,7 +95,7 @@ const Header = ({handleOpenModal}) => {
           <>
           <div className={HeaderStyles.user_wrapper}>
           <span className={setStyle(theme, HeaderStyles.link, HeaderStyles.darkThemeLink, HeaderStyles.lightThemeLink)}>{t('add')}</span>
-          <SettingsIcon onClick={handleOpenModal} className={HeaderStyles.icon}/>
+          <SettingsIcon onClick={handleOpenModal} className={setStyle(theme, HeaderStyles.icon, HeaderStyles.darkThemeLink, HeaderStyles.lightThemeLink)}/>
           </div>
           </>
         )}
