@@ -72,5 +72,10 @@
     "title": "Create your own balance wheel",
     "text": "Create your own balance wheel and manage your finances correctly",
     "btn": "Create your balance wheel"
+  },
+  "Settings": {
+    "settings": "Settings",
+    "theme": "Theme",
+    "lang": "Language"
   }
 }

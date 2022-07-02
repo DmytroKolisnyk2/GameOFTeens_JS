@@ -46,9 +46,9 @@ function MyApp({ Component, pageProps }) {
         type="image/x-icon"
       />
         <link rel="icon shortcut" href="../logo.jpg" type="image/x-icon" />
-        <link rel="alternate" href="http://example.com" hrefLang="x-default" />
-        <link rel="alternate" href="http://example.com" hrefLang="en" />
-        <link rel="alternate" href="http://example.com/ar" hrefLang="ukr" />
+        <link rel="alternate" href="/" hrefLang="x-default" />
+        <link rel="alternate" href="/" hrefLang="en" />
+        <link rel="alternate" href="/ukr" hrefLang="ukr" />
       {Component.title ? <title>{Component.title}</title> : <title>Project</title>}
 
     </Head>
