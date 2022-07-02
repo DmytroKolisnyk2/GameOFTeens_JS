@@ -49,6 +49,7 @@ const Calendar = () => {
                           setData((prev) => {
                             for (const item in prev) {
                               const element = prev[item];
+                              // console.log(item);
                               for (const elem in element) {
                                 if (element[elem] === "") {
                                   element[elem] = 0;
