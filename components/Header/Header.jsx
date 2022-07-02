@@ -28,6 +28,14 @@ const Header = () => {
               >
                 Home
               </NavLink>
+              <NavLink
+                activeClass={HeaderStyles.linkActive}
+                exact
+                href={"/users"}
+                classes={HeaderStyles.link}
+              >
+                Users
+              </NavLink>
               {username && (
                 <>
                   <NavLink

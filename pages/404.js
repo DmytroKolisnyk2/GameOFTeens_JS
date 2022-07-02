@@ -1,5 +1,5 @@
   import img from "../img/404.png"
-  import styles from "./404.module.scss"
+  import styles from "../styles/404.module.scss"
   import { Button } from "@mui/material"
   import Link from "next/link";
 export default function Error() {
