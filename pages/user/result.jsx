@@ -38,13 +38,13 @@ const result = () => {
   const sum = () => {
     // const state = store.getState().currentUser.data;
     for (const day in userData) {
-      if (Object.hasOwnProperty.call(userData, day)) {
         const element = userData[day];
+
         for (const el in element) {
           const data = element[el];
+          if(!data) continue;
           totalSpending[el] += data;
         }
-      }
     }
     console.log(totalSpending);
     return totalSpending;
