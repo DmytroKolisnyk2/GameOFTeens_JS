@@ -1,0 +1,46 @@
+@import "../../styles/variables.scss";
+.main_page_wrapper{
+    margin: 0 auto;
+    padding-top: 100px;
+    padding-bottom: 100px;
+   
+    @media (min-width: 1200px) {  
+        display: flex;
+        max-width: 950px;
+    }
+}
+.main_page_title{
+    font-size: 50px;
+    font-family: $arima;
+    padding-bottom: 20px;
+    text-align: center;
+    @media (min-width: 1200px) {  
+       text-align: left;
+    }
+}
+.main_page_text{
+    font-size: 18px;
+    font-family: $roboto;
+    text-align: center;
+    padding-bottom: 30px;
+    @media (min-width: 1200px) {  
+        text-align: left;
+     }
+}
+.main_page_btn{
+
+    @media (max-width: 1200px) {  
+        display: flex;
+        margin: 0 auto;
+     }
+}
+
+.schedule_img{
+    width: 450px;
+    @media (max-width: 1200px) {  
+       width: 250px;
+       margin: 0 auto;
+       display: block;
+       padding-top: 30px;
+     }
+}

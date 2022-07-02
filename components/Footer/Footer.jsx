@@ -12,8 +12,11 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import {getTheme} from '../../redux/theme/theme-selectors';
 import { useSelector } from "react-redux";
 
+import { useTranslations } from "next-intl"
+
 const Footer = () => {
-  const theme = useSelector(getTheme);
+  const t = useTranslations("Footer");
+    const theme = useSelector(getTheme);
   const setStyle = (theme, style, darkTheme, lightTheme) => {
     switch (theme) {
       case 'default':
@@ -38,7 +41,7 @@ const Footer = () => {
           <h2 className={setStyle(theme, styles.logo, styles.darkThemeText, styles.lightThemeText)}>HOPEteam</h2>
         </a>
         <div className={styles.wrapperTeam}>
-          <h3 className={setStyle(theme, styles.teamTitle, styles.darkThemeText, styles.lightThemeText)}>Our Team :</h3>
+          <h3 className={setStyle(theme, styles.teamTitle, styles.darkThemeText, styles.lightThemeText)}>{t('team')}</h3>
           <div className={styles.wrapperLinks}>
             <a
               className={styles.link}
@@ -104,7 +107,7 @@ const Footer = () => {
         </div>
       </div>
       <div className={styles.wrapperText}>
-        <h4 className={setStyle(theme, styles.footerText, styles.darkThemeText, styles.lightThemeText)}>All rights are reserved.</h4>
+        <h4 className={setStyle(theme, styles.footerText, styles.darkThemeText, styles.lightThemeText)}>{t('rights')}</h4>
         <CopyrightIcon className={setStyle(theme, styles.copyRightIcon, styles.darkThemeText, styles.lightThemeText)} />
       </div>
     </footer>

@@ -52,7 +52,7 @@ const Header = ({handleOpenModal}) => {
                 href={"/users"}
                 classes={setStyle(theme, HeaderStyles.link, HeaderStyles.darkThemeLink, HeaderStyles.lightThemeLink)}
               >
-                Users
+                {t('users')}
               </NavLink>
               {username && (
                 <>
