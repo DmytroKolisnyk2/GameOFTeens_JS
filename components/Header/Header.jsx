@@ -129,27 +129,11 @@ const Header = ({ handleOpenModal }) => {
           </div>
         ) : (
           <>
-            <div className={HeaderStyles.user_wrapper}>
-              <span
-                className={setStyle(
-                  theme,
-                  HeaderStyles.link,
-                  HeaderStyles.darkThemeLink,
-                  HeaderStyles.lightThemeLink
-                )}
-              >
-                {t("add")}
-              </span>
-              <SettingsIcon
-                onClick={handleOpenModal}
-                className={setStyle(
-                  theme,
-                  HeaderStyles.icon,
-                  HeaderStyles.darkThemeLink,
-                  HeaderStyles.lightThemeLink
-                )}
-              />
-            </div>
+
+          <div className={HeaderStyles.user_wrapper}>
+          <Link href={'/users'}><a className={setStyle(theme, HeaderStyles.link, HeaderStyles.darkThemeLink, HeaderStyles.lightThemeLink)}>{t('add')}</a></Link>
+          <SettingsIcon onClick={handleOpenModal} className={setStyle(theme, HeaderStyles.icon, HeaderStyles.darkThemeLink, HeaderStyles.lightThemeLink)}/>
+          </div>
           </>
         )}
       </div>
