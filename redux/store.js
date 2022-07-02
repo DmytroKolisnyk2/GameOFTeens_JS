@@ -2,6 +2,7 @@ import { configureStore, combineReducers } from "@reduxjs/toolkit";
 // import { contacts } from "./contacts/contacts-reducers";
 import { users } from "./users/users-reducers";
 import { currentUser } from "./currentUser/currentUser-reducers";
+import theme from './theme/theme-reducers';
 import {
   persistReducer,
   persistStore,
@@ -20,7 +21,7 @@ const persistConfig = {
   storage,
 };
 
-const rootReducer = combineReducers({ users, currentUser });
+const rootReducer = combineReducers({ users, currentUser, theme });
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 export const store = configureStore({
