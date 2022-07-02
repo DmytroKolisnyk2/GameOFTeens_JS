@@ -3,7 +3,7 @@ import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import styles from "./Settings.module.scss";
 import { useState } from "react";
-import {useRouter} from "next/router"
+import { useRouter } from "next/router";
 
 import TranslateIcon from "@mui/icons-material/Translate";
 import PaletteIcon from "@mui/icons-material/Palette";
@@ -20,18 +20,15 @@ import {
   setDefaultLanguage,
   setUkrainianLanguage,
 } from "../../redux/localization/locales-actions";
-import {useTranslations} from "next-intl"
-
+import { useTranslations } from "next-intl";
 
 const SettingsModal = ({ isOpen, handleClose }) => {
   const t = useTranslations("Settings");
-  const router = useRouter()
-
-
-const SettingsModal = ({ isOpen, handleClose }) => {
+  const router = useRouter();
   const dispatch = useDispatch();
   const theme = useSelector(getTheme);
   const language = useSelector(getLang);
+
   const onChangeTheme = (value) => {
     switch (value) {
       case "default":
@@ -45,12 +42,12 @@ const SettingsModal = ({ isOpen, handleClose }) => {
   const onChangeLang = (value) => {
     switch (value) {
       case "english":
-        router.push(router.asPath, "/", {locale: "en"})
+        router.push(router.asPath, router.asPath, { locale: "en" });
         return dispatch(setDefaultLanguage("english"));
       case "ukrainian":
-        console.log('ukr');
+        console.log("ukr");
         console.log(router);
-        router.push("/ukr" + router.asPath)
+        router.push("/ukr" + router.asPath);
         return dispatch(setUkrainianLanguage("ukrainian"));
     }
   };
@@ -64,17 +61,7 @@ const SettingsModal = ({ isOpen, handleClose }) => {
         return `${style} ${lightTheme}`;
     }
   };
-  return (
-    <Modal open={isOpen} onClose={handleClose} className={styles.wrapperModal}>
-      <div
-        className={setStyle(
-          theme,
-          styles.modal,
-          styles.themeDark,
-          styles.themeLight
-        )}
-      >
-  const [language, setLanguage] = useState("english");
+
   return (
     <Modal open={isOpen} onClose={handleClose} className={styles.wrapperModal}>
       <div className={setStyle(theme, styles.modal, styles.themeDark, styles.themeLight)}>
@@ -86,7 +73,7 @@ const SettingsModal = ({ isOpen, handleClose }) => {
             styles.lightThemeText
           )}
         >
-          {t('settings')}
+          {t("settings")}
         </h3>
         <div className={styles.wrapperSelect}>
           <label className={styles.selectTheme}>
@@ -107,7 +94,7 @@ const SettingsModal = ({ isOpen, handleClose }) => {
                   styles.lightThemeText
                 )}
               >
-                {t('theme')}
+                {t("theme")}
               </h4>
             </div>
             <Select
@@ -141,7 +128,7 @@ const SettingsModal = ({ isOpen, handleClose }) => {
                   styles.lightThemeText
                 )}
               >
-                {t('lang')}
+                {t("lang")}
               </h4>
             </div>
             <Select
@@ -151,7 +138,6 @@ const SettingsModal = ({ isOpen, handleClose }) => {
               id="language"
               value={language}
               onChange={(event) => onChangeLang(event.target.value)}
-
             >
               <MenuItem value={"english"}>english</MenuItem>
               <MenuItem value={"ukrainian"}>ukrainian</MenuItem>
