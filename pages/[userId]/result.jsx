@@ -2,15 +2,16 @@ import { useRouter } from "next/router";
 import Diagram from "../../components/Diagram/Diagram";
 import styles from "../../styles/result.module.scss";
 import PrivateRoute from "../../components/PrivateRoute/PrivateRoute";
-import { Button } from "@mui/material";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+
 import { useSelector } from "react-redux";
 import { getUserDataById } from "../../redux/users/user-selectors";
+import { getCurrentUserId } from "../../redux/currentUser/currentUser-selectors";
+
 
 const result = () => {
   const { query, back } = useRouter();
-  const userData = useSelector(getUserDataById);
-
+  const userId = useSelector(getCurrentUserId);
+  const userData = useSelector(getUserDataById(userId));
   let totalSpending = {
     health: 0,
     progress: 0,
@@ -31,23 +32,12 @@ const result = () => {
         }
       }
     }
+    console.log(totalSpending);
     return totalSpending;
   };
   return (
     <section className={styles.results__wrapper}>
       <PrivateRoute>
-        <Button
-          className={styles.button}
-          size="large"
-          color="secondary"
-          variant="contained"
-          startIcon={<ArrowBackIcon />}
-          onClick={() => back()}
-        >
-          Go Back
-        </Button>
-        <h1 className={styles.result}>Your result</h1>
-
         <Diagram data={sum()} />
       </PrivateRoute>
     </section>
