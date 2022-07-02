@@ -8,6 +8,7 @@ import { updateData } from "../../redux/users/data/data-actions";
 import { getCurrentUserId } from "../../redux/currentUser/currentUser-selectors";
 import { getUserDataById } from "../../redux/users/user-selectors";
 import { useTranslations } from "next-intl";
+import NotificationManager from "react-notifications/lib/NotificationManager";
 
 const Calendar = () => {
   const t = useTranslations("Calendar");
@@ -23,12 +24,12 @@ const Calendar = () => {
       dispatch(updateData({ id: userId, data }));
       return;
     }
-    NotificationManager.error(t('error'));
+    NotificationManager.error(t("error"));
   };
 
   const isValidData = () =>
     Object.keys(data).every((day) =>
-      Object.values(data[day]).every((item) => item >= 0)
+      Object.values(data[day]).every((item) => item >= 0 && item < 1000)
     );
 
   return (
@@ -46,20 +47,19 @@ const Calendar = () => {
                       key={`${day}-${item}`}
                       value={data[day][item]}
                       onChange={({ target }) => {
-                          setData((prev) => {
-                            for (const item in prev) {
-                              const element = prev[item];
-                              // console.log(item);
-                              for (const elem in element) {
-                                if (element[elem] === "") {
-                                  element[elem] = 0;
-                                }
-                              }
-                            }
-                            const newData = JSON.parse(JSON.stringify(prev));
-                            newData[day][item] = +target.value;
-                            return newData;
-                          });
+                        setData((prev) => {
+                          // for (const item in prev) {
+                          //   const element = prev[item];
+                          //   for (const elem in element) {
+                          //     if (element[elem] === "") {
+                          //       element[elem] = 0;
+                          //     }
+                          //   }
+                          // }
+                          const newData = JSON.parse(JSON.stringify(prev));
+                          newData[day][item] = +target.value;
+                          return newData;
+                        });
                       }}
                       margin="dense"
                       name={`${day}-${item}`}
@@ -80,13 +80,8 @@ const Calendar = () => {
             >
               {t("save")}
             </Button>
-            <Button
-              className={styles.button}
-              color="secondary"
-              type="text"
-              variant="contained"
-            >
-             {t("result")}
+            <Button className={styles.button} color="secondary" type="text" variant="contained">
+              {t("result")}
             </Button>
           </form>
         )}
