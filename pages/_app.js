@@ -14,7 +14,7 @@ import { PersistGate } from "redux-persist/integration/react";
 import NotificationContainer from "react-notifications/lib/NotificationContainer";
 import ScrollTopArrow from "../components/ScrollTopArrow/ScrollTopArrow";
 import NextNProgress from "nextjs-progressbar";
-
+import AboutPage from '../components/AboutPage/AboutPage';
 function MyApp({ Component, pageProps }) {
   return <>
     <Head>
@@ -35,6 +35,7 @@ function MyApp({ Component, pageProps }) {
 
     <div className='body'>
       <Header />
+      <AboutPage/>
       <PersistGate loading={null} persistor={persistor}>
         <Provider store={store}>
           <Component {...pageProps} />
