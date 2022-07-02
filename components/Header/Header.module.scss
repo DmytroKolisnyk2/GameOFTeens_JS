@@ -10,26 +10,62 @@
     justify-content: space-between;
     background-color: $brown;
     padding: 16px 20px;
+    transition: 200ms linear;
 }
+
+.themeDark {
+    background-color: $darkTheme;
+}
+
+.themeLight {
+    background-color: $lightTheme;
+}
+
 .link {
     font-family: $roboto;
     color: black;
     font-size: 20px;
     margin-right: 20px;
     cursor: pointer;
-    &Active {
+    transition: 200ms linear;
+    &:hover {
         color: $purple;
     }
 }
-.link:hover {
-    color: $purple;
-}
+
 .user_name {
     font-family: $roboto;
     color: black;
     margin-right: 15px;
     font-size: 20px;
+    transition: 200ms linear;
 }
+
+.icon {
+    transition: 600ms linear;
+    color: black;
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+    margin-left: 15px;
+    &:hover {
+        color: $purple;
+        transform: rotate(180deg);
+    }
+}
+
+.darkThemeLink {
+    color: $darkThemeText;
+}
+
+.lightThemeLink {
+    color: $lightThemeText;
+}
+
+.active {
+    color: $purple;
+}
+
 .user_img {
     width: 30px;
     height: 30px;
@@ -55,17 +91,4 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
-
-.icon {
-    transition: 500ms linear;
-    color: black;
-    width: 35px;
-    height: 35px;
-    cursor: pointer;
-    margin-left: 15px;
-    &:hover {
-        color: $purple;
-        transform: rotate(180deg);
-    }
 }

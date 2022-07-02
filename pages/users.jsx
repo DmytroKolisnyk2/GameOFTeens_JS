@@ -32,7 +32,7 @@ export default function users() {
           <ul className={styles.usersList}>
             {users.map((item) => (
               <li key={item.id} className={styles.user}>
-                <Link href={`${item.id}/calendar`}>
+                <Link href={`/user/calendar`}>
                   <a className={styles.link}>{item.name}</a>
                 </Link>
                 <ButtonGroup>

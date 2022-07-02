@@ -12,6 +12,15 @@
     background-color: $brown;
     border-radius: 12px;
     padding: 20px 40px;
+    transition: 200ms linear;
+}
+
+.themeDark {
+    background-color: $darkTheme;
+}
+
+.themeLight {
+    background-color: $lightTheme;
 }
 
 .modalTitle {
@@ -21,6 +30,7 @@
     color: black;
     text-align: center;
     margin-bottom: 15px;
+    transition: 200ms linear;
 }
 
 .wrapperSelect {
@@ -55,6 +65,7 @@
     font-weight: 600;
     color: black;
     text-align: center;
+    transition: 200ms linear;
 }
 
 .selectLanguage {
@@ -65,3 +76,13 @@
     align-items: center;
     flex-direction: column;
 }
+
+.darkThemeText {
+    color: $darkThemeText;
+}
+
+.lightThemeText {
+    color: $lightThemeText;
+}
+
+.labelIcon {}

@@ -61,6 +61,7 @@ function MyApp({ Component, pageProps }) {
             <Header handleOpenModal={setIsOpen} />
             <Component {...pageProps} />
             <Footer />
+            <SettingsModal isOpen={Boolean(isOpen)} handleClose={handleClose}/>
           </div>
         </Provider>
       </PersistGate>
@@ -71,7 +72,6 @@ function MyApp({ Component, pageProps }) {
     />
     <ScrollTopArrow bgColor="red" />
     <NotificationContainer />
-    <SettingsModal isOpen={isOpen} handleClose={handleClose}/>
   </>
 
 }
