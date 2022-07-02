@@ -15,7 +15,13 @@ import NotificationContainer from "react-notifications/lib/NotificationContainer
 import ScrollTopArrow from "../components/ScrollTopArrow/ScrollTopArrow";
 import NextNProgress from "nextjs-progressbar";
 import AboutPage from '../components/AboutPage/AboutPage';
+import SettingsModal from '../components/SettingsModal/SettingsModal';
+import {useState} from 'react';
 function MyApp({ Component, pageProps }) {
+  const [isOpen, setIsOpen] = useState(false);
+  const handleClose = () => {
+    setIsOpen(!isOpen);
+  };
   return <>
     <Head>
 
@@ -37,7 +43,7 @@ function MyApp({ Component, pageProps }) {
     <PersistGate loading={null} persistor={persistor}>
       <Provider store={store}>
         <div className='body'>
-          <Header />
+          <Header handleOpenModal={handleClose} />
 
           <Component {...pageProps} />
           <Footer />
@@ -51,6 +57,7 @@ function MyApp({ Component, pageProps }) {
     />
     <ScrollTopArrow bgColor="red" />
     <NotificationContainer />
+    <SettingsModal isOpen={isOpen} handleClose={handleClose}/>
   </>
 }
 

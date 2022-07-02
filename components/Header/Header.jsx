@@ -8,11 +8,11 @@ import { getCurrentUserName } from "../../redux/currentUser/currentUser-selector
 import { useDispatch } from "react-redux";
 import NotificationManager from "react-notifications/lib/NotificationManager";
 import { deleteCurrentUser } from "../../redux/currentUser/currentUser-actions";
+import SettingsIcon from '@mui/icons-material/Settings';
 
-const Header = () => {
+const Header = ({handleOpenModal}) => {
   const username = useSelector(getCurrentUserName);
   const dispatch = useDispatch();
-
   return (
     <header className={HeaderStyles.header}>
       <div className={HeaderStyles.wrapper_page}>
@@ -72,9 +72,15 @@ const Header = () => {
             >
               Exit
             </Button>
+            <SettingsIcon onClick={handleOpenModal} className={HeaderStyles.icon}/>
           </div>
         ) : (
-          <div>Please add user profile</div>
+          <>
+          <div className={HeaderStyles.user_wrapper}>
+          <span>Please add user profile</span>
+          <SettingsIcon onClick={handleOpenModal} className={HeaderStyles.icon}/>
+          </div>
+          </>
         )}
       </div>
     </header>
