@@ -3,6 +3,19 @@ import { v4 } from "uuid";
 import { addUser, removeUser } from "./users-actions";
 import { updateData } from "./data/data-actions";
 
+const INITIAL_STATE = {
+  health: '',
+  progress: '',
+  travels: '',
+  hobby: '',
+  friends: '',
+  family: '',
+  carrier: '',
+};
+
+const week = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
+
+const initialData = week.reduce((acc, item) => ({ ...acc, [item]: { ...INITIAL_STATE } }), {});
 
 export const users = createReducer([], {
   [addUser]: (state, { payload }) => [
@@ -10,19 +23,18 @@ export const users = createReducer([], {
     {
       id: v4(),
       name: payload,
-      data: {},
+      data: initialData,
     },
   ],
+
   [removeUser]: (state, { payload }) =>
     state.filter((item) => item.id !== payload),
 
   [updateData]: (state, { payload }) => {
-    console.log(payload);
-    const { id, data } = payload;
-    state.forEach((element) => {
-      element.id === id ? (element.data = data) : element;
-    });
-
-    return [...state, { id: v4(), name: payload.name, data: {} }];
-  },
+    const updateUser = state.find((item) => item.id === payload.id);
+    updateUser.data = payload.data;
+    return void([
+      ...state.filter((item) => item.id !== payload.id), updateUser
+    ])
+  }
 });
