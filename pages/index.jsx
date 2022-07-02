@@ -6,10 +6,14 @@ import { useSelector } from "react-redux";
 import { getUserList } from "../redux/users/user-selectors";
 import Link from "next/link";
 import DeleteIcon from "@mui/icons-material/Delete";
+import { removeUser } from "../redux/users/data/data-actions";
+import { useDispatch } from "react-redux";
 
 export default function Home() {
   const [openDialog, setOpenDialog] = useState(false);
   const users = useSelector(getUserList);
+  const dispatch = useDispatch();
+
   return (
     <section className={styles.home}>
       <div className={styles.contentWrapper}>
@@ -24,7 +28,12 @@ export default function Home() {
                 <Link href={`${item.id}/calendar`}>
                   <a className={styles.link}>{item.name}</a>
                 </Link>
-                <Button color="secondary" variant="outlined" startIcon={<DeleteIcon />}>
+                <Button
+                  onClick={() => dispatch(removeUser(item.id))}
+                  color="secondary"
+                  variant="outlined"
+                  startIcon={<DeleteIcon />}
+                >
                   Delete
                 </Button>
               </li>

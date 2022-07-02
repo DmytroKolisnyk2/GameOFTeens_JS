@@ -10,6 +10,8 @@ export const users = createReducer([], {
     data: {}
   }]
   ,
+  [removeUser]: (state, { payload }) => state.filter((item) => item.id !== payload),
+
   [updateData]: (state, { payload }) => {
     console.log(payload);
     const { id, data } = payload;
@@ -17,5 +19,4 @@ export const users = createReducer([], {
 
     return [...state, { id: v4(), name: payload.name, data: {} }]
   },
-  // [removeUser]: () => (state, { payload }) => [...state, { id: v4(), name: payload.name, data: {} }]
 });
