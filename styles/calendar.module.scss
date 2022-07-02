@@ -1,0 +1,41 @@
+@import 'variables.scss';
+
+.calendarPage {
+    width: 100vw;
+    margin: 0 auto;
+    background-color: $belge;
+    padding: 35px 25px 55px 25px;
+}
+.calendar {
+    display: grid;
+    gap: 20px;
+    grid-template: repeat(1, auto) / repeat(7, auto);
+    margin: 0 auto 20px auto;
+}
+
+.column {
+    max-width: 300px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.title {
+    font-size: 28px;
+    font-weight: 700;
+    font-family: $arima;
+    color: black;
+    margin-bottom: 20px;
+}
+
+.button {
+    margin: 0 auto;
+    display: block;
+}
+
+.submitButton {
+    margin: 15px auto;
+    display: block;
+}

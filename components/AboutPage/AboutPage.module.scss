@@ -1,0 +1,62 @@
+@import '../../styles//variables.scss';
+.main_title{
+    font-size: 35px;
+    font-family: $arima;
+    text-align: center;
+    padding-top: 50px;
+    font-weight: 500;
+}
+.main_text{
+    font-size: 15px;
+    font-family: $roboto;
+    text-align: center;
+    padding-top: 20px;
+    font-weight: 100;
+    
+}
+.title{
+    font-size: 30px;
+    font-family: $arima;
+    text-align: center;
+    padding-top: 40px;
+    font-weight: 500;
+}
+.cards_wrapper{
+    display:flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding-top: 20px;
+}
+.item_wrapper{
+    width: 250px;
+   
+}
+
+.item_title{
+    font-size: 20px;
+    text-align: center;
+    padding-bottom: 10px;
+    font-family: $arima;
+    font-weight: 400;
+}
+
+.item_img{
+    width: 50px;
+    height: 50px;
+    margin: 0 auto;
+    display: block;
+    padding-bottom: 10px;
+
+}
+.item_text{
+    text-align: center;
+    padding-bottom: 10px;
+    font-size: 15px;
+    font-family: $roboto;
+    font-weight: 100;
+}   
+.main_wrapper{
+    background-color: $belge;
+}

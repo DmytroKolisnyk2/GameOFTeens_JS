@@ -34,6 +34,14 @@ const Header = () => {
               >
                 {t('home')}
               </NavLink>
+              <NavLink
+                activeClass={HeaderStyles.linkActive}
+                exact
+                href={"/users"}
+                classes={HeaderStyles.link}
+              >
+                Users
+              </NavLink>
               {username && (
                 <>
                   <NavLink
