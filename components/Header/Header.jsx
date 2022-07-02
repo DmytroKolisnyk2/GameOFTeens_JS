@@ -125,7 +125,7 @@ const Header = ({ handleOpenModal }) => {
             >
               {t("exit")}
             </Button>
-            <SettingsIcon onClick={handleOpenModal} className={HeaderStyles.icon} />
+            <SettingsIcon onClick={handleOpenModal} className={setStyle(theme, HeaderStyles.icon, HeaderStyles.darkThemeLink, HeaderStyles.lightThemeLink)} />
           </div>
         ) : (
           <>

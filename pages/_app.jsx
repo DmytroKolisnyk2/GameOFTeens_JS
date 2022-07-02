@@ -28,7 +28,7 @@ const messages = {
   ukr,
 };
 function MyApp({ Component, pageProps }) {
-  const { locales, locale } = useRouter();
+  const { locale } = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   const handleClose = () => {
     setIsOpen(!isOpen);
@@ -41,7 +41,36 @@ function MyApp({ Component, pageProps }) {
         <meta name="theme-color" content="#000000" />
         <meta name="description" content="description" />
         <link rel="icon shortcut" href="../logo.jpg" type="image/x-icon" />
-        <link rel="icon shortcut" href="../logo.jpg" type="image/x-icon" />
+        {/* //--
+        <link rel="alternate" href="/" hrefLang="x-default" />
+        <link rel="alternate" href="/" hrefLang="en" />
+        <link rel="alternate" href="/ukr" hrefLang="ukr" />
+      {Component.title ? <title>{Component.title}</title> : <title>Project</title>}
+
+    </Head>
+    <div id="root-modal"></div>
+
+    <IntlProvider locale={locale} messages={messages[locale]}>
+      <PersistGate loading={null} persistor={persistor}>
+        <Provider store={store}>
+          <div className='body'>
+            <Header handleOpenModal={setIsOpen} />
+            <Component {...pageProps} />
+            <Footer />
+            <SettingsModal isOpen={Boolean(isOpen)} handleClose={handleClose}/>
+          </div>
+        </Provider>
+      </PersistGate>
+    </IntlProvider>
+    <NextNProgress
+      color="tomato"
+      showOnShallow={true}
+    />
+    <ScrollTopArrow bgColor="red" />
+    <NotificationContainer />
+  </>
+
+//-- */}
         <link rel="alternate" href="http://example.com" hrefLang="x-default" />
         <link rel="alternate" href="http://example.com" hrefLang="en" />
         <link rel="alternate" href="http://example.com/ar" hrefLang="ukr" />

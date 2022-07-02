@@ -1,3 +1,4 @@
 import { createAction } from "@reduxjs/toolkit";
 
-export const setUserLanguage = createAction("local/setLang")
+export const setDefaultLanguage = createAction("locale/english");
+export const setUkrainianLanguage = createAction("locale/ukrainian");

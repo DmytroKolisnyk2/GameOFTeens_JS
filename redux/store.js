@@ -3,6 +3,7 @@ import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import { users } from "./users/users-reducers";
 import { currentUser } from "./currentUser/currentUser-reducers";
 import theme from './theme/theme-reducers';
+import {language} from "./localization/locales-reducers"
 import {
   persistReducer,
   persistStore,
@@ -21,7 +22,7 @@ const persistConfig = {
   storage,
 };
 
-const rootReducer = combineReducers({ users, currentUser, theme });
+const rootReducer = combineReducers({ language, users, currentUser, theme });
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 export const store = configureStore({

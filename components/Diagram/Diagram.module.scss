@@ -42,6 +42,7 @@
   top: 120px;
   // background-color: $purple;
 }
+
 .main_page_title{
   font-size: 50px;
   font-family: $arima;
@@ -54,5 +55,20 @@
   font-family: $roboto;
   text-align: left;
   padding-bottom: 30px;
- 
+
+
+.themeDark {
+  background-color: $darkThemeMain;
+}
+
+.themeLight {
+  background-color: $lightThemeMain;
+}
+
+.darkThemeText {
+  color: $darkThemeText;
+}
+
+.lightThemeText {
+  color: $lightThemeText;
 }

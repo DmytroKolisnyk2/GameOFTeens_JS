@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import { Button, ButtonGroup } from "@mui/material";
 import { useState } from "react";
 import styles from "../styles/home.module.scss";
@@ -12,28 +13,41 @@ import { addCurrentUser } from "../redux/currentUser/currentUser-actions";
 import { useDispatch } from "react-redux";
 import NotificationManager from "react-notifications/lib/NotificationManager";
 import { useTranslations } from "next-intl";
+import { getTheme } from "../redux/theme/theme-selectors";
 
 export default function users() {
   const t = useTranslations("Users");
   const [openDialog, setOpenDialog] = useState(false);
   const users = useSelector(getUserList);
   const dispatch = useDispatch();
+  const theme = useSelector(getTheme);
+  const setStyle = (theme, style, darkTheme, lightTheme) => {
+    switch (theme) {
+      case "default":
+        return style;
+      case "dark":
+        return `${style} ${darkTheme}`;
+      case "light":
+        return `${style} ${lightTheme}`;
+    }
+  };
+
   return (
-    <section className={styles.home}>
+    <section className={setStyle(theme, styles.home, styles.themeDark, styles.themeLight)}>
       <div className={styles.contentWrapper}>
         <CreateUserDialog
           open={openDialog}
           handleClose={() => setOpenDialog(false)}
         />
-        <div className={styles.userWrapper}>
-          <h2 className={styles.title}>{t("how")}</h2>
-          <p className={styles.text}>{t("guide")}</p>
+        <div className={setStyle(theme, styles.userWrapper, styles.cardDarkTheme, styles.cardLightTheme)}>
+          <h2 className={setStyle(theme, styles.title, styles.darkThemeText, styles.lightThemeText)}>{t("how")}</h2>
+          <p className={setStyle(theme, styles.text, styles.darkThemeText, styles.lightThemeText)}>{t("guide")}</p>
 
           <ul className={styles.usersList}>
             {users.map((item) => (
               <li key={item.id} className={styles.user}>
                 <Link href={`/user/calendar`}>
-                  <a className={styles.link}>{item.name}</a>
+                  <a className={setStyle(theme, styles.link, styles.darkThemeText, styles.lightThemeText)}>{item.name}</a>
                 </Link>
                 <ButtonGroup>
                   <Button

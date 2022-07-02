@@ -13,6 +13,8 @@ import Button from "@mui/material/Button";
 import { useRouter } from "next/router";
 import Arrow from "@mui/icons-material/ArrowBack";
 ChartJS.register(RadialLinearScale, ArcElement, Tooltip, Legend);
+import { getTheme } from "../../redux/theme/theme-selectors";
+import { useSelector } from "react-redux";
 
 export const initialData = {
   labels: [
@@ -56,6 +58,18 @@ const Diagram = ({ data }) => {
     const percent = Math.floor((d / sum) * 100);
     return percent;
   });
+  const theme = useSelector(getTheme);
+
+  const setStyle = (theme, style, darkTheme, lightTheme) => {
+    switch (theme) {
+      case "default":
+        return style;
+      case "dark":
+        return `${style} ${darkTheme}`;
+      case "light":
+        return `${style} ${lightTheme}`;
+    }
+  };
   newData.datasets[0].percentData = dataArr;
   newData.labels = [
     `${t("health")}, %`,
@@ -75,7 +89,7 @@ const Diagram = ({ data }) => {
     .slice(0, 2);
 
   return (
-    <div className={styles.results__wrapper}>
+    <div className={setStyle(theme, styles.results__wrapper, styles.themeDark, styles.themeLight)}>
       <Button
         className={styles.button}
         size="large"
@@ -86,12 +100,14 @@ const Diagram = ({ data }) => {
       >
         {t('goBack')}
       </Button>
+
       <div>
       <div className={styles.main_page_wrapper}>
         <div>
         <h1 className={styles1.main_page_title}>About your result</h1>
           <h2 className={styles1.main_page_text}>On this page you can view your result. Below you can view a number of tips for applying your finances</h2>
         <h2 className={styles.text}>
+
           {t("advice")} {newData.labels[indexArray.indexOf(res[0])].slice(0,-3)} {t('and')} {" "}
           {newData.labels[indexArray.indexOf(res[1])].slice(0,-3)}
         </h2>
