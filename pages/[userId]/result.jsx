@@ -3,7 +3,7 @@ import Diagram from "../../components/Diagram/Diagram";
 import Button from "@mui/material/Button";
 import Arrow from "@mui/icons-material/ArrowBack";
 import styles from "../../styles/result.module.scss";
-// import "../../styles/variables.scss"
+import { store, persistor } from "../../redux/store.js";
 
 const result = () => {
   const { query, back } = useRouter();
@@ -22,15 +22,7 @@ const result = () => {
       <h1 className={styles.result}>Your result</h1>
 
       <Diagram
-        data={{
-          health: 2500,
-          progress: 2500,
-          travels: 1500,
-          hobby: 4000,
-          friends: 1600,
-          family: 5000,
-          carrier: 4000,
-        }}
+        data={store.getState().currentUser.data}
       />
     </div>
   );

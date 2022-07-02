@@ -7,7 +7,15 @@ export const users = createReducer([], {
   [addUser]: (state, { payload }) => [...state, {
     id: v4(),
     name: payload,
-    data: {}
+    data: {
+      // health: 2500,
+      // progress: 2500,
+      // travels: 1500,
+      // hobby: 4000,
+      // friends: 1600,
+      // family: 1000,
+      // carrier: 4000,
+    }
   }]
   ,
   [removeUser]: (state, { payload }) => state.filter((item) => item.id !== payload),

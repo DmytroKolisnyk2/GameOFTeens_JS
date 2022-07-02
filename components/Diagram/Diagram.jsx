@@ -12,13 +12,13 @@ ChartJS.register(RadialLinearScale, ArcElement, Tooltip, Legend);
 
 export const initialData = {
   labels: [
-    "Health and Sport %",
-    "Self development %",
-    "Rest and Travels %",
-    "Creativity and hobbies %",
-    "Inner circle %",
-    "Family %",
-    "Carrier %",
+    "Health and Sport, %",
+    "Progress, %",
+    "Rest and Travels, %",
+    "Hobbies, %",
+    "Friends, %",
+    "Family, %",
+    "Carrier, %",
   ],
   datasets: [
     {
@@ -62,8 +62,8 @@ const Diagram = ({ data }) => {
     <div className={styles.polarArea__wrapper}>
       <PolarArea data={newData} className={styles.diagram} />
       <h2 className={styles.text}>
-        You have to work with {newData.labels[indexArray.indexOf(res[0])]} and{" "}
-        {newData.labels[indexArray.indexOf(res[1])]}
+        You have to work with {newData.labels[indexArray.indexOf(res[0])].slice(0,-3)} and {" "}
+        {newData.labels[indexArray.indexOf(res[1])].slice(0,-3)}
       </h2>
     </div>
   );
