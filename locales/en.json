@@ -14,7 +14,8 @@
     "goBack": "",
     "about": "About your result",
     "about_text": " On this page you can view your result. Below you can view a number of tips for applying your finances",
-    "null": "You have not spent anything yet, or you don`t match more than 3 categories"
+    "null": "You have not spent anything yet, or you don`t match more than 3 categories",
+    "equal": "All your categories are balanced, good job!"
   },
   "Header": {
     "home": "Home",
