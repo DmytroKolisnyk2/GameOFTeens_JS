@@ -3,6 +3,10 @@
     width: 50px;
     border-radius: 50%;
     margin-right: 30px;
+    @media (max-width: 720px) {
+        opacity: 0;
+        display: none;
+    }
 }
 
 .header {
@@ -11,6 +15,7 @@
     background-color: $brown;
     padding: 16px 20px;
     transition: 200ms linear;
+    flex-wrap: wrap;
 }
 
 .themeDark {
@@ -51,6 +56,7 @@
     transition: 200ms linear;
     border-bottom: 3px solid transparent;
     // padding-bottom: 2px;
+    flex-wrap: wrap;
     &:hover {
         color: $purple;
     }
@@ -84,14 +90,25 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
 }
 .logo_wrapper {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
+    // width: 450px;
+    margin-right: 50px;
 }
 .wrapper {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
 }
