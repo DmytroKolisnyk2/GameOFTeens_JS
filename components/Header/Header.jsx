@@ -130,6 +130,7 @@ const Header = ({ handleOpenModal }) => {
               onClick={handleOpenModal}
               className={setStyle(
                 theme,
+                HeaderStyles.settings
                 HeaderStyles.icon,
                 HeaderStyles.darkThemeLink,
                 HeaderStyles.lightThemeLink
