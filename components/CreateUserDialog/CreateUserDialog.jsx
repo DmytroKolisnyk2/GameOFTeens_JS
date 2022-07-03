@@ -11,19 +11,31 @@ import { getUserList } from "../../redux/users/user-selectors";
 import { useSelector } from "react-redux";
 import NotificationManager from "react-notifications/lib/NotificationManager";
 import { useTranslations } from "next-intl";
+import { getTheme } from "../../redux/theme/theme-selectors";
+import styles from './CreateUserDialog.module.scss';
 
 export default function CreateUserDialog({ open, handleClose }) {
   const t = useTranslations("Users");
   const [input, setInput] = useState("");
   const dispatch = useDispatch();
   const users = useSelector(getUserList);
-
+  const theme = useSelector(getTheme);
+  const setStyle = (theme, style, darkTheme, lightTheme) => {
+    switch (theme) {
+      case "default":
+        return style;
+      case "dark":
+        return `${style} ${darkTheme}`;
+      case "light":
+        return `${style} ${lightTheme}`;
+    }
+  };
   const isValidName = () => input && !Boolean(users.find((item) => item.name === input));
 
   return (
     <Dialog open={open}>
-      <DialogTitle>{t("submit")}</DialogTitle>
-      <DialogContent>
+      <DialogTitle className={setStyle(theme, styles.style, styles.dark, styles.light)}>{t("submit")}</DialogTitle>
+      <DialogContent className={setStyle(theme, styles.style, styles.dark, styles.light)}>
         <TextField
           autoFocus
           margin="dense"
@@ -36,7 +48,7 @@ export default function CreateUserDialog({ open, handleClose }) {
           onChange={({ target }) => setInput(target.value)}
         />
       </DialogContent>
-      <DialogActions>
+      <DialogActions className={setStyle(theme, styles.style, styles.dark, styles.light)}>
         <Button onClick={() => handleClose()}>{t("cancel")}</Button>
         <Button
           onClick={() => {

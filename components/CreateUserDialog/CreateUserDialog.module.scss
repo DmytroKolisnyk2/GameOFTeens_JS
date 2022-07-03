@@ -1,0 +1,15 @@
+@import '../../styles/variables.scss';
+
+.dark {
+    background-color: $darkTheme;
+    color: $darkThemeText;
+    display: block;
+}
+
+.light {
+    background-color: $lightTheme;
+    color: $lightThemeText;
+    display: block;
+}
+
+.style {}
