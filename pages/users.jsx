@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/rules-of-hooks */
 import { Button, ButtonGroup } from "@mui/material";
 import { useState } from "react";
 import styles from "../styles/home.module.scss";
@@ -16,6 +15,8 @@ import { useDispatch } from "react-redux";
 import NotificationManager from "react-notifications/lib/NotificationManager";
 import { useTranslations } from "next-intl";
 import { getTheme } from "../redux/theme/theme-selectors";
+import Router from "next/router";
+import { getCurrentUserName } from "../redux/currentUser/currentUser-selectors";
 
 export default function users() {
   const t = useTranslations("Users");
@@ -23,6 +24,8 @@ export default function users() {
   const users = useSelector(getUserList);
   const dispatch = useDispatch();
   const theme = useSelector(getTheme);
+  const username = useSelector(getCurrentUserName);
+  console.log(Boolean(username));
   const setStyle = (theme, style, darkTheme, lightTheme) => {
     switch (theme) {
       case "default":
@@ -36,6 +39,7 @@ export default function users() {
 
   return (
     <section className={setStyle(theme, styles.home, styles.themeDark, styles.themeLight)}>
+//<<<<<<< user1
      <div className={styles.wrapper}>
      <div>
           <h1 className={stylesPage.main_page_title}>Your user account</h1>
@@ -50,13 +54,44 @@ export default function users() {
      
           <h2 className={setStyle(theme, styles.title, styles.darkThemeText, styles.lightThemeText)}>{t("how")}</h2>
           <p className={setStyle(theme, styles.text, styles.darkThemeText, styles.lightThemeText)}>{t("guide")}</p>
+//=======
+      <div className={styles.contentWrapper}>
+        <CreateUserDialog open={openDialog} handleClose={() => setOpenDialog(false)} />
+        <div
+          className={setStyle(
+            theme,
+            styles.userWrapper,
+            styles.cardDarkTheme,
+            styles.cardLightTheme
+          )}
+        >
+          <h2
+            className={setStyle(theme, styles.title, styles.darkThemeText, styles.lightThemeText)}
+          >
+            {t("how")}
+          </h2>
+          <p className={setStyle(theme, styles.text, styles.darkThemeText, styles.lightThemeText)}>
+            {t("guide")}
+          </p>
+//>>>>>>> master
 
           <ul className={styles.usersList}>
             {users.map((item) => (
               <li key={item.id} className={styles.user}>
-                <Link href={`/user/calendar`}>
-                  <a className={setStyle(theme, styles.link, styles.darkThemeText, styles.lightThemeText)}>{item.name}</a>
-                </Link>
+                <p
+                  onClick={() => {
+                    dispatch(addCurrentUser(item));
+                    NotificationManager.success(t("added"));
+                  }}
+                  className={setStyle(
+                    theme,
+                    styles.link,
+                    styles.darkThemeText,
+                    styles.lightThemeText
+                  )}
+                >
+                  {item.name}
+                </p>
                 <ButtonGroup>
                   <Button
                     onClick={() => dispatch(removeUser(item.id))}
@@ -79,14 +114,25 @@ export default function users() {
               </li>
             ))}
           </ul>
-          <Button
-            className={styles.createBtn}
-            onClick={() => setOpenDialog(true)}
-            color="secondary"
-            variant="contained"
-          >
-            {t("create")}
-          </Button>
+          <div className={styles.controlsWrapper}>
+            <Button
+              className={styles.createBtn}
+              onClick={() => setOpenDialog(true)}
+              color="secondary"
+              variant="contained"
+            >
+              {t("create")}
+            </Button>
+            <Button
+              className={styles.createBtn}
+              onClick={() => Router.push("/user/calendar")}
+              color="secondary"
+              variant="outlined"
+              disabled={!Boolean(username)}
+            >
+              {t("calendar")}
+            </Button>
+          </div>
         </div>
       </div>
      </div>
