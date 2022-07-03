@@ -125,15 +125,43 @@ const Header = ({ handleOpenModal }) => {
             >
               {t("exit")}
             </Button>
-            <SettingsIcon onClick={handleOpenModal} className={setStyle(theme, HeaderStyles.icon, HeaderStyles.darkThemeLink, HeaderStyles.lightThemeLink)} />
+            <SettingsIcon
+              onClick={handleOpenModal}
+              className={setStyle(
+                theme,
+                HeaderStyles.icon,
+                HeaderStyles.darkThemeLink,
+                HeaderStyles.lightThemeLink
+              )}
+            />
           </div>
         ) : (
           <>
-
-          <div className={HeaderStyles.user_wrapper}>
-          <Link href={'/users'}><a className={setStyle(theme, HeaderStyles.link, HeaderStyles.darkThemeLink, HeaderStyles.lightThemeLink)}>{t('add')}</a></Link>
-          <SettingsIcon onClick={handleOpenModal} className={setStyle(theme, HeaderStyles.icon, HeaderStyles.darkThemeLink, HeaderStyles.lightThemeLink)}/>
-          </div>
+            <div className={HeaderStyles.user_wrapper}>
+              <Link href={"/users"}>
+                <a
+                  className={setStyle(
+                    theme,
+                    // HeaderStyles.link,
+                    HeaderStyles.darkThemeLink,
+                    HeaderStyles.lightThemeLink
+                  )}
+                >
+                  <Button color="secondary" variant="outlined" endIcon={<LogoutIcon />}>
+                    {t("add")}
+                  </Button>
+                </a>
+              </Link>
+              <SettingsIcon
+                onClick={handleOpenModal}
+                className={setStyle(
+                  theme,
+                  HeaderStyles.icon,
+                  HeaderStyles.darkThemeLink,
+                  HeaderStyles.lightThemeLink
+                )}
+              />
+            </div>
           </>
         )}
       </div>
