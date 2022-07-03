@@ -24,9 +24,9 @@ import { addCurrentUser } from "../redux/currentUser/currentUser-actions";
 import { getTheme } from "../redux/theme/theme-selectors";
 import { getUserList } from "../redux/users/user-selectors";
 import { getCurrentUserName } from "../redux/currentUser/currentUser-selectors";
+import Check from '@mui/icons-material/Check';
 
-
-export default users = () => {
+export default Users = () => {
   const [openDialog, setOpenDialog] = useState(false);
   const t = useTranslations("Users");
 
@@ -116,7 +116,7 @@ export default users = () => {
                       }}
                       color="secondary"
                       variant="outlined"
-                      endIcon={<PersonAddAltIcon />}
+                      endIcon={username === item.name ? <Check/> : <PersonAddAltIcon />}
                     ></Button>
                   </ButtonGroup>
                 </li>
