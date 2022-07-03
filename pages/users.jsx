@@ -2,7 +2,7 @@ import { Button, ButtonGroup } from "@mui/material";
 import { useState } from "react";
 import styles from "../styles/home.module.scss";
 import stylesPage from "../components/MainPage/MainPage.module.scss";
-import img from "../img/users.png"
+import img from "../img/users.png";
 import CreateUserDialog from "../components/CreateUserDialog/CreateUserDialog";
 import { useSelector } from "react-redux";
 import { getUserList } from "../redux/users/user-selectors";
@@ -39,103 +39,98 @@ export default function users() {
 
   return (
     <section className={setStyle(theme, styles.home, styles.themeDark, styles.themeLight)}>
-//<<<<<<< user1
-     <div className={styles.wrapper}>
-     <div>
+      <div className={styles.wrapper}>
+        <div>
           <h1 className={stylesPage.main_page_title}>Your user account</h1>
-            <img className={styles.img} src={img.src} alt={img.src} />
-          </div>
-            <div className={styles.contentWrapper}>
-        <CreateUserDialog
-          open={openDialog}
-          handleClose={() => setOpenDialog(false)}
-        />
-        <div className={setStyle(theme, styles.userWrapper, styles.cardDarkTheme, styles.cardLightTheme)}>
-     
-          <h2 className={setStyle(theme, styles.title, styles.darkThemeText, styles.lightThemeText)}>{t("how")}</h2>
-          <p className={setStyle(theme, styles.text, styles.darkThemeText, styles.lightThemeText)}>{t("guide")}</p>
-//=======
-      <div className={styles.contentWrapper}>
-        <CreateUserDialog open={openDialog} handleClose={() => setOpenDialog(false)} />
-        <div
-          className={setStyle(
-            theme,
-            styles.userWrapper,
-            styles.cardDarkTheme,
-            styles.cardLightTheme
-          )}
-        >
-          <h2
-            className={setStyle(theme, styles.title, styles.darkThemeText, styles.lightThemeText)}
+          <img className={styles.img} src={img.src} alt={img.src} />
+        </div>
+        <div className={styles.contentWrapper}>
+          <CreateUserDialog open={openDialog} handleClose={() => setOpenDialog(false)} />
+          <div
+            className={setStyle(
+              theme,
+              styles.userWrapper,
+              styles.cardDarkTheme,
+              styles.cardLightTheme
+            )}
           >
-            {t("how")}
-          </h2>
-          <p className={setStyle(theme, styles.text, styles.darkThemeText, styles.lightThemeText)}>
-            {t("guide")}
-          </p>
-//>>>>>>> master
+            <h2
+              className={setStyle(
+                theme,
+                styles.title,
+                styles.darkThemeText,
+                styles.lightThemeText
+              )}
+            >
+              {t("how")}
+            </h2>
+            <p
+              className={setStyle(theme, styles.text, styles.darkThemeText, styles.lightThemeText)}
+            >
+              {t("guide")}
+            </p>
 
-          <ul className={styles.usersList}>
-            {users.map((item) => (
-              <li key={item.id} className={styles.user}>
-                <p
-                  onClick={() => {
-                    dispatch(addCurrentUser(item));
-                    NotificationManager.success(t("added"));
-                  }}
-                  className={setStyle(
-                    theme,
-                    styles.link,
-                    styles.darkThemeText,
-                    styles.lightThemeText
-                  )}
-                >
-                  {item.name}
-                </p>
-                <ButtonGroup>
-                  <Button
-                    onClick={() => dispatch(removeUser(item.id))}
-                    color="secondary"
-                    variant="outlined"
-                    startIcon={<DeleteIcon />}
-                  >
-                    {t("delete")}
-                  </Button>
-                  <Button
+            <ul className={styles.usersList}>
+              {users.map((item) => (
+                <li key={item.id} className={styles.user}>
+                  <p
                     onClick={() => {
                       dispatch(addCurrentUser(item));
                       NotificationManager.success(t("added"));
                     }}
-                    color="secondary"
-                    variant="outlined"
-                    endIcon={<PersonAddAltIcon />}
-                  ></Button>
-                </ButtonGroup>
-              </li>
-            ))}
-          </ul>
-          <div className={styles.controlsWrapper}>
-            <Button
-              className={styles.createBtn}
-              onClick={() => setOpenDialog(true)}
-              color="secondary"
-              variant="contained"
-            >
-              {t("create")}
-            </Button>
-            <Button
-              className={styles.createBtn}
-              onClick={() => Router.push("/user/calendar")}
-              color="secondary"
-              variant="outlined"
-              disabled={!Boolean(username)}
-            >
-              {t("calendar")}
-            </Button>
+                    className={setStyle(
+                      theme,
+                      styles.link,
+                      styles.darkThemeText,
+                      styles.lightThemeText
+                    )}
+                  >
+                    {item.name}
+                  </p>
+                  <ButtonGroup>
+                    <Button
+                      onClick={() => dispatch(removeUser(item.id))}
+                      color="secondary"
+                      variant="outlined"
+                      startIcon={<DeleteIcon />}
+                    >
+                      {t("delete")}
+                    </Button>
+                    <Button
+                      onClick={() => {
+                        dispatch(addCurrentUser(item));
+                        NotificationManager.success(t("added"));
+                      }}
+                      color="secondary"
+                      variant="outlined"
+                      endIcon={<PersonAddAltIcon />}
+                    ></Button>
+                  </ButtonGroup>
+                </li>
+              ))}
+            </ul>
+            <div className={styles.controlsWrapper}>
+              <Button
+                className={styles.createBtn}
+                onClick={() => setOpenDialog(true)}
+                color="secondary"
+                variant="contained"
+              >
+                {t("create")}
+              </Button>
+              <Button
+                className={styles.createBtn}
+                onClick={() => Router.push("/user/calendar")}
+                color="secondary"
+                variant="outlined"
+                disabled={!Boolean(username)}
+              >
+                {t("calendar")}
+              </Button>
+            </div>
           </div>
         </div>
       </div>
-     </div>
     </section>
   );
 }
