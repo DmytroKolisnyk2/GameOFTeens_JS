@@ -1,6 +1,8 @@
 import { Button, ButtonGroup } from "@mui/material";
 import { useState } from "react";
 import styles from "../styles/home.module.scss";
+import stylesPage from "../components/MainPage/MainPage.module.scss";
+import img from "../img/users.png"
 import CreateUserDialog from "../components/CreateUserDialog/CreateUserDialog";
 import { useSelector } from "react-redux";
 import { getUserList } from "../redux/users/user-selectors";
@@ -37,6 +39,22 @@ export default function users() {
 
   return (
     <section className={setStyle(theme, styles.home, styles.themeDark, styles.themeLight)}>
+//<<<<<<< user1
+     <div className={styles.wrapper}>
+     <div>
+          <h1 className={stylesPage.main_page_title}>Your user account</h1>
+            <img className={styles.img} src={img.src} alt={img.src} />
+          </div>
+            <div className={styles.contentWrapper}>
+        <CreateUserDialog
+          open={openDialog}
+          handleClose={() => setOpenDialog(false)}
+        />
+        <div className={setStyle(theme, styles.userWrapper, styles.cardDarkTheme, styles.cardLightTheme)}>
+     
+          <h2 className={setStyle(theme, styles.title, styles.darkThemeText, styles.lightThemeText)}>{t("how")}</h2>
+          <p className={setStyle(theme, styles.text, styles.darkThemeText, styles.lightThemeText)}>{t("guide")}</p>
+//=======
       <div className={styles.contentWrapper}>
         <CreateUserDialog open={openDialog} handleClose={() => setOpenDialog(false)} />
         <div
@@ -55,6 +73,7 @@ export default function users() {
           <p className={setStyle(theme, styles.text, styles.darkThemeText, styles.lightThemeText)}>
             {t("guide")}
           </p>
+//>>>>>>> master
 
           <ul className={styles.usersList}>
             {users.map((item) => (
@@ -116,6 +135,7 @@ export default function users() {
           </div>
         </div>
       </div>
+     </div>
     </section>
   );
 }
