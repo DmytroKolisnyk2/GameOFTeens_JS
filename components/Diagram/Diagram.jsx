@@ -89,10 +89,15 @@ const Diagram = ({ data }) => {
     .sort((a, b) => a - b)
     .slice(0, 2);
   const count = 0;
+  const isEqual = 0;
+  let chto = data["health"];
   for (const item in data) {
     const element = data[item];
     if (element === 0) count++;
+    if (element === chto) isEqual++;
   }
+  console.log(isEqual);
+  console.log(newData.datasets[0].data);
   return (
     <>
       <Button
@@ -118,9 +123,8 @@ const Diagram = ({ data }) => {
             <div className={styles.polarArea__text__wrapper}>
               <h1 className={styles.main_page_title}>{t("about")}</h1>
               <h2 className={styles.main_page_text}>{t("about_text")}</h2>
-
-              {count > 1 ? (
-                <h2 className={styles.text}>{t("null")}</h2>
+              {isEqual === 7 ? (
+                <h2 className={styles.text}>{t("equal")}</h2>
               ) : (
                 <h2 className={styles.text}>
                   {t("advice")}{" "}
@@ -129,6 +133,7 @@ const Diagram = ({ data }) => {
                   {newData.labels[indexArray.indexOf(res[1])].slice(0, -3)}
                 </h2>
               )}
+              {count > 1 && <h2 className={styles.text}>{t('null')}</h2>}
             </div>
             <div className={styles.polarArea__wrapper}>
               <PolarArea data={newData} className={styles.diagram} />
