@@ -26,7 +26,7 @@ import { getUserList } from "../redux/users/user-selectors";
 import { getCurrentUserName } from "../redux/currentUser/currentUser-selectors";
 import Check from '@mui/icons-material/Check';
 
-export default Users = () => {
+export default function Home () {
   const [openDialog, setOpenDialog] = useState(false);
   const t = useTranslations("Users");
 
@@ -115,7 +115,7 @@ export default Users = () => {
                         NotificationManager.success(t("added"));
                       }}
                       color="secondary"
-                      variant="outlined"
+                      variant={username === item.name ? "contained" : "outlined"}
                       endIcon={username === item.name ? <Check/> : <PersonAddAltIcon />}
                     ></Button>
                   </ButtonGroup>
