@@ -6,7 +6,6 @@ import img from "../img/users.png";
 import CreateUserDialog from "../components/CreateUserDialog/CreateUserDialog";
 import { useSelector } from "react-redux";
 import { getUserList } from "../redux/users/user-selectors";
-import Link from "next/link";
 import DeleteIcon from "@mui/icons-material/Delete";
 import PersonAddAltIcon from "@mui/icons-material/PersonAddAlt";
 import { removeUser } from "../redux/users/data/data-actions";
@@ -38,10 +37,10 @@ export default function users() {
   };
 
   return (
-    <section className={setStyle(theme, styles.home, styles.themeDark, styles.themeLight)}>
+    <section className={setStyle(theme, styles.userSection, styles.themeDark, styles.themeLight)}>
       <div className={styles.wrapper}>
         <div>
-          <h1 className={stylesPage.main_page_title}>{t('user')}</h1>
+          <h1 className={stylesPage.main_page_title}>{t("user")}</h1>
           <img className={styles.img} src={img.src} alt={img.src} />
         </div>
         <div className={styles.contentWrapper}>
@@ -72,7 +71,11 @@ export default function users() {
 
             <ul className={styles.usersList}>
               {users.map((item) => (
-                <li key={item.id} className={styles.user}>
+                <li
+                  key={item.id}
+                  className={styles.user + " " + (item.name === username ? styles.userActive : "")}
+                >
+     
                   <p
                     onClick={() => {
                       dispatch(addCurrentUser(item));

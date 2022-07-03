@@ -4,16 +4,27 @@
   background-color: $belge;
   padding: 1px;
   padding: 50px 20px;
-
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.wrapper{
-  @media (min-width: 1200px) {  
+.userSection {
+  background-color: $belge;
+  padding: 1px;
+  padding: 50px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.wrapper {
+  @media (min-width: 1200px) {
     display: flex;
     max-width: 1000px;
     margin: 0 auto;
+  }
 }
-}
+
 .contentWrapper {
   display: flex;
   justify-content: center;
@@ -32,6 +43,12 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-left: 4px solid transparent;
+  transition: 200ms linear;
+  padding: 3px;
+  &Active {
+    border-color: $purple;
+  }
 }
 .link {
   font-family: $roboto;
@@ -39,20 +56,20 @@
   color: black;
 }
 .createBtn {
-    display: block;
-    margin: auto;
+  display: block;
+  margin: auto;
 }
-.usersList{
+.usersList {
   margin-bottom: 20px;
 }
-.title{
+.title {
   font-size: 30px;
   font-family: $arima;
   font-weight: 500;
   padding-bottom: 10px;
   text-align: center;
 }
-.text{
+.text {
   font-size: 17px;
   font-family: $roboto;
   font-weight: 300;
@@ -83,10 +100,10 @@
 .lightThemeText {
   color: $lightThemeText;
 }
-.img{
+.img {
   margin-bottom: 30px;
   width: 500px;
-  @media (max-width: 1200px) {  
+  @media (max-width: 1200px) {
     width: 400px;
     margin: 0 auto;
     display: block;

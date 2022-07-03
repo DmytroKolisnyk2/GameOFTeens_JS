@@ -10,10 +10,10 @@ import { useDispatch } from "react-redux";
 import { getUserList } from "../../redux/users/user-selectors";
 import { useSelector } from "react-redux";
 import NotificationManager from "react-notifications/lib/NotificationManager";
-import {useTranslations} from "next-intl"
+import { useTranslations } from "next-intl";
 
 export default function CreateUserDialog({ open, handleClose }) {
-  const t = useTranslations("Users")
+  const t = useTranslations("Users");
   const [input, setInput] = useState("");
   const dispatch = useDispatch();
   const users = useSelector(getUserList);
@@ -22,13 +22,13 @@ export default function CreateUserDialog({ open, handleClose }) {
 
   return (
     <Dialog open={open}>
-      <DialogTitle>{t('submit')}</DialogTitle>
+      <DialogTitle>{t("submit")}</DialogTitle>
       <DialogContent>
         <TextField
           autoFocus
           margin="dense"
           id="name"
-          label={t('name')}
+          label={t("name")}
           type="text"
           fullWidth
           variant="outlined"
@@ -37,18 +37,22 @@ export default function CreateUserDialog({ open, handleClose }) {
         />
       </DialogContent>
       <DialogActions>
-        <Button onClick={() => handleClose()}>{t('cancel')}</Button>
+        <Button onClick={() => handleClose()}>{t("cancel")}</Button>
         <Button
           onClick={() => {
             if (isValidName()) {
+              if (input.length > 15) {
+                NotificationManager.error("type name less then 15 charackters");
+                return;
+              }
               dispatch(addUser(input));
               handleClose();
             } else {
-              NotificationManager.error(t('error_alredyUsed'));
+              NotificationManager.error(t("error_alredyUsed"));
             }
           }}
         >
-          {t('add')}
+          {t("add")}
         </Button>
       </DialogActions>
     </Dialog>
