@@ -46,7 +46,6 @@ const result = () => {
           totalSpending[el] += data;
         }
     }
-    console.log(totalSpending);
     return totalSpending;
   };
   return (

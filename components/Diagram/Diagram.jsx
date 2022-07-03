@@ -82,7 +82,6 @@ const Diagram = ({ data }) => {
     `${t("family")}, %`,
     `${t("carrier")}, %`,
   ];
-  // console.log(newData.labels)
   newData.datasets[0].data = percentData;
   const indexArray = newData.datasets[0].percentData;
   const res = dataArr
@@ -94,7 +93,6 @@ const Diagram = ({ data }) => {
     const element = data[item];
     if (element === 0) count++;
   }
-  console.log(count);
   return (
     <>
       <Button
