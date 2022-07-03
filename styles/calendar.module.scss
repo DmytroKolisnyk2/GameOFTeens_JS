@@ -3,14 +3,24 @@
 .calendarPage {
     width: 100vw;
     margin: 0 auto;
+    padding: 0 0 20px 0;
     background-color: $belge;
 }
 .calendar {
     display: grid;
     gap: 20px;
-    grid-template: repeat(1, auto) / repeat(7, auto);
+    grid-template: repeat(1, auto);
     margin: 0 auto 20px auto;
-    padding: 35px 25px 55px 25px;
+    padding: 35px 25px 0 25px;
+    @media screen and (min-width: 768px) {
+        grid-template: repeat(1, auto) / repeat(2, auto);
+    }
+    @media screen and (min-width: 1024px) {
+        grid-template: repeat(1, auto) / repeat(3, auto);
+    }
+    @media screen and (min-width: 1200px) {
+    grid-template: repeat(1, auto) / repeat(7, auto);
+}
 }
 
 .column {
@@ -20,6 +30,7 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    margin: 0 auto;
 }
 
 .title {
