@@ -14,6 +14,7 @@ import Link from "next/link";
 import { language } from "../../redux/localization/locales-reducers";
 import { useTranslations } from "next-intl";
 import { getTheme } from "../../redux/theme/theme-selectors";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
 const Header = ({ handleOpenModal }) => {
   const t = useTranslations("Header");
@@ -147,7 +148,7 @@ const Header = ({ handleOpenModal }) => {
                     HeaderStyles.lightThemeLink
                   )}
                 >
-                  <Button color="secondary" variant="outlined" endIcon={<LogoutIcon />}>
+                  <Button color="secondary" variant="outlined" endIcon={<AccountCircleIcon />}>
                     {t("add")}
                   </Button>
                 </a>
