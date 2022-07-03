@@ -1,30 +1,41 @@
+import Router from "next/router";
+import NotificationManager from "react-notifications/lib/NotificationManager";
+
 import { Button, ButtonGroup } from "@mui/material";
+import DeleteIcon from "@mui/icons-material/Delete";
+
 import { useState } from "react";
+
 import styles from "../styles/home.module.scss";
 import stylesPage from "../components/MainPage/MainPage.module.scss";
+
 import img from "../img/users.png";
-import CreateUserDialog from "../components/CreateUserDialog/CreateUserDialog";
-import { useSelector } from "react-redux";
-import { getUserList } from "../redux/users/user-selectors";
-import DeleteIcon from "@mui/icons-material/Delete";
+
 import PersonAddAltIcon from "@mui/icons-material/PersonAddAlt";
+import { useTranslations } from "next-intl";
+import CreateUserDialog from "../components/CreateUserDialog/CreateUserDialog";
+
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+
 import { removeUser } from "../redux/users/data/data-actions";
 import { addCurrentUser } from "../redux/currentUser/currentUser-actions";
-import { useDispatch } from "react-redux";
-import NotificationManager from "react-notifications/lib/NotificationManager";
-import { useTranslations } from "next-intl";
+
 import { getTheme } from "../redux/theme/theme-selectors";
-import Router from "next/router";
+import { getUserList } from "../redux/users/user-selectors";
 import { getCurrentUserName } from "../redux/currentUser/currentUser-selectors";
 
+
 export default users = () => {
-  const t = useTranslations("Users");
   const [openDialog, setOpenDialog] = useState(false);
-  const users = useSelector(getUserList);
+  const t = useTranslations("Users");
+
   const dispatch = useDispatch();
+
+  const users = useSelector(getUserList);
   const theme = useSelector(getTheme);
   const username = useSelector(getCurrentUserName);
-  console.log(Boolean(username));
+
   const setStyle = (theme, style, darkTheme, lightTheme) => {
     switch (theme) {
       case "default":
