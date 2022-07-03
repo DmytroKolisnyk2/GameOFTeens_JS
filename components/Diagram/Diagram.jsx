@@ -91,8 +91,7 @@ const Diagram = ({ data }) => {
     if (element === 0) count++;
     if (element === chto) isEqual++;
   }
-  console.log(isEqual);
-  console.log(newData.datasets[0].data);
+
   return (
     <>
       <Button
