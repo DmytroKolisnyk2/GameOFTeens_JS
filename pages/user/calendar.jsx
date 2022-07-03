@@ -11,7 +11,8 @@ import { useTranslations } from "next-intl";
 import NotificationManager from "react-notifications/lib/NotificationManager";
 import { getTheme } from "../../redux/theme/theme-selectors";
 import Router from "next/router";
-
+import SaveIcon from "@mui/icons-material/Save";
+import FactCheckIcon from "@mui/icons-material/FactCheck";
 
 const Calendar = () => {
   const t = useTranslations("Calendar");
@@ -50,11 +51,20 @@ const Calendar = () => {
     <section className={setStyle(theme, styles.calendarPage, styles.themeDark, styles.themeLight)}>
       <PrivateRoute>
         {data && (
-          <form onSubmit={submitValue}>
+          <form className={styles.form} onSubmit={submitValue}>
             <div className={styles.calendar}>
               {Object.keys(data).map((day) => (
                 <div key={day} className={styles.column}>
-                  <h3 className={setStyle(theme, styles.title, styles.darkThemeText, styles.lightThemeText)}>{day}</h3>
+                  <h3
+                    className={setStyle(
+                      theme,
+                      styles.title,
+                      styles.darkThemeText,
+                      styles.lightThemeText
+                    )}
+                  >
+                    {day}
+                  </h3>
                   {Object.keys(data[day]).map((item) => (
                     <TextField
                       day={day}
@@ -78,17 +88,33 @@ const Calendar = () => {
                 </div>
               ))}
             </div>
-            <Button
-              type="submit"
-              className={styles.submitButton}
-              color="secondary"
-              variant="outlined"
-            >
-              {t("save")}
-            </Button>
-            <Button onClick={() => Router.push('/user/result')} className={styles.button} color="secondary" type="text" variant="contained">
-              {t("result")}
-            </Button>
+            <div className={styles.btnWrapper}>
+              <Button
+                type="submit"
+                className={styles.submitButton}
+                variant="contained"
+                endIcon={<SaveIcon />}
+                size="large"
+                color={data === userData ? "secondary" : "error"}
+              >
+                {t("save")}
+              </Button>
+              <Button
+                onClick={() => {
+                  if (isValidData()) {
+                    Router.push("/user/result");
+                  }
+                }}
+                className={styles.button}
+                color="secondary"
+                type="text"
+                variant="outlined"
+                endIcon={<FactCheckIcon />}
+                size="large"
+              >
+                {t("result")}
+              </Button>
+            </div>
           </form>
         )}
       </PrivateRoute>
