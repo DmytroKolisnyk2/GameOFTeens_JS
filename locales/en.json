@@ -57,7 +57,9 @@
     "name": "Name",
     "add": "Add",
     "cancel": "Cancel",
-    "error_alredyUsed": "This name is already used"
+    "error_alredyUsed": "This name is already used",
+    "user": "Your user account",
+    "calendar": "Go to the calendar"
   },
   "Calendar": {
     "result": "Generate result",

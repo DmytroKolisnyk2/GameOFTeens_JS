@@ -41,7 +41,7 @@ export default function users() {
     <section className={setStyle(theme, styles.home, styles.themeDark, styles.themeLight)}>
       <div className={styles.wrapper}>
         <div>
-          <h1 className={stylesPage.main_page_title}>Your user account</h1>
+          <h1 className={stylesPage.main_page_title}>{t('user')}</h1>
           <img className={styles.img} src={img.src} alt={img.src} />
         </div>
         <div className={styles.contentWrapper}>
