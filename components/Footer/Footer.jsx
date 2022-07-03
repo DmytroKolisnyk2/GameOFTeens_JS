@@ -34,7 +34,7 @@ const Footer = () => {
         <Slide triggerOnce duration={600}>
           <Fade triggerOnce cascade duration={600}>
             <a
-              target="_blank"
+              target="_blank" rel="noreferrer"
               href="https://github.com/HOPEteam2021"
               className={styles.wrapperLogo}
             >
@@ -74,7 +74,7 @@ const Footer = () => {
               <div className={styles.wrapperLinks}>
                 <a
                   className={styles.link}
-                  target="_blank"
+                  target="_blank" rel="noreferrer"
                   href="https://www.linkedin.com/in/dmytro-kolisnyk-203a61235/"
                 >
                   <div className={styles.overlay}>
@@ -90,7 +90,7 @@ const Footer = () => {
                 </a>
                 <a
                   className={styles.link}
-                  target="_blank"
+                  target="_blank" rel="noreferrer"
                   href="https://www.linkedin.com/in/igor-yakibiuk-bb751522b/"
                 >
                   <div className={styles.overlay}>
@@ -106,7 +106,7 @@ const Footer = () => {
                 </a>
                 <a
                   className={styles.link}
-                  target="_blank"
+                  target="_blank" rel="noreferrer"
                   href="https://www.instagram.com/annadominikakozak/"
                 >
                   <div className={styles.overlay}>
@@ -120,7 +120,7 @@ const Footer = () => {
                     className={styles.avatar}
                   />
                 </a>
-                <a className={styles.link} target="_blank" href="https://github.com/MaxPopsuy">
+                <a className={styles.link} target="_blank" rel="noreferrer" href="https://github.com/MaxPopsuy">
                   <div className={styles.overlay}>
                     <GitHubIcon className={styles.icon} />
                   </div>

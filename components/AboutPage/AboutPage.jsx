@@ -30,7 +30,7 @@ export default function AboutPage({ setIsOpen }) {
   return (
     <section className={setStyle(theme, styles.main_wrapper, styles.themeDark, styles.themeLight)}>
       <div className={styles.wrapper}>
-        <Fade cascade duration={600} duration={500} triggerOnce>
+        <Fade cascade duration={600} triggerOnce>
           <h2
             className={setStyle(
               theme,

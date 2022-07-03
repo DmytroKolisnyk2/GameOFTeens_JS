@@ -17,7 +17,7 @@ import { getTheme } from "../redux/theme/theme-selectors";
 import Router from "next/router";
 import { getCurrentUserName } from "../redux/currentUser/currentUser-selectors";
 
-export default function users() {
+export default users = () => {
   const t = useTranslations("Users");
   const [openDialog, setOpenDialog] = useState(false);
   const users = useSelector(getUserList);
@@ -75,7 +75,6 @@ export default function users() {
                   key={item.id}
                   className={styles.user + " " + (item.name === username ? styles.userActive : "")}
                 >
-     
                   <p
                     onClick={() => {
                       dispatch(addCurrentUser(item));
@@ -136,4 +135,4 @@ export default function users() {
       </div>
     </section>
   );
-}
+};
