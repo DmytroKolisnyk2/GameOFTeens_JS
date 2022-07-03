@@ -3,8 +3,7 @@
     width: 50px;
     border-radius: 50%;
     margin-right: 30px;
-    @media (max-width: 720px) {
-        opacity: 0;
+    @media (max-width: 800px) {
         display: none;
     }
 }
@@ -85,6 +84,10 @@
     max-width: 1200px;
     margin: 0 auto;
     width: 100vw;
+    flex-wrap: wrap;
+    @media (max-width: 780px) {
+        justify-content: space-around;
+    }
 }
 .user_wrapper {
     display: flex;
@@ -97,8 +100,6 @@
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    // width: 450px;
-    margin-right: 50px;
 }
 .wrapper {
     display: flex;

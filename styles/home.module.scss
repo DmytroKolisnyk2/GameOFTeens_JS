@@ -47,6 +47,7 @@
   transition: 200ms linear;
   padding: 3px;
   &Active {
+    padding-left: 8px;
     border-color: $purple;
   }
 }
@@ -54,6 +55,7 @@
   font-family: $roboto;
   font-size: 20px;
   color: black;
+  cursor: pointer;
 }
 .createBtn {
   display: block;
@@ -110,4 +112,11 @@
     margin-top: 30px;
     margin-bottom: 50px;
   }
+}
+.controlsWrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 300px;
+    margin: 0 auto;
 }
