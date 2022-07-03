@@ -1,4 +1,4 @@
-@import '../../styles/variables.scss';
+@import "../../styles/variables.scss";
 
 .polarArea__wrapper {
   min-width: 40%;
@@ -13,7 +13,7 @@
   @media (max-width: 320px) {
     display: block;
     margin: 0 auto;
-    max-width:300px;
+    max-width: 300px;
   }
 }
 .diagram {
@@ -24,8 +24,10 @@
   padding-bottom: 50px;
   font-family: $roboto;
   text-align: center;
+  font-size: 20px;
   color: black;
-
+  max-width: 500px;
+  margin: 0 auto 60px;
 }
 .results__wrapper {
   display: flex;
@@ -34,20 +36,19 @@
   // text-align: center;
   max-width: 1200px;
   background-color: $belge;
-  @media (max-width: 1200px) {  
+  @media (max-width: 1200px) {
     display: flex;
     flex-direction: column;
     justify-content: center;
     height: 100%;
     padding-top: 100px;
   }
-
 }
 
 .main_page_wrapper {
   display: flex;
   justify-content: center;
-  @media(max-width: 1200px) { 
+  @media (max-width: 1200px) {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -56,17 +57,20 @@
   }
 }
 
-.polarArea__text__wrapper{
+.polarArea__text__wrapper {
   max-width: 40%;
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
+  background-color: $brown;
+  border-radius: 10px;
+  padding: 20px;
   // margin-top: 50px;
   @media (max-width: 1200px) {
     max-width: 80%;
     display: block;
-    margin: 0 auto;
+    margin: 0 auto 20px;
   }
 }
 .result {
@@ -86,18 +90,18 @@
   // background-color: $purple;
 }
 
-.main_page_title{
+.main_page_title {
   font-size: 50px;
   font-family: $arima;
-  padding-bottom: 20px;
   text-align: center;
- 
+  margin-bottom: 50px;
 }
-.main_page_text{
-  font-size: 18px;
+.main_page_text {
+  font-size: 20px;
   font-family: $roboto;
   text-align: center;
-  padding-bottom: 30px;
+  max-width: 500px;
+  margin: 0 auto 60px;
 }
 
 .themeDark {

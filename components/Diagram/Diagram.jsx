@@ -1,10 +1,4 @@
-import {
-  Chart as ChartJS,
-  RadialLinearScale,
-  ArcElement,
-  Tooltip,
-  Legend,
-} from "chart.js";
+import { Chart as ChartJS, RadialLinearScale, ArcElement, Tooltip, Legend } from "chart.js";
 // import styles1 from "../MainPage/MainPage.module.scss";
 import styles from "./Diagram.module.scss";
 import { PolarArea } from "react-chartjs-2";
@@ -16,6 +10,7 @@ ChartJS.register(RadialLinearScale, ArcElement, Tooltip, Legend);
 import { getTheme } from "../../redux/theme/theme-selectors";
 import { useSelector } from "react-redux";
 import { useState } from "react";
+import { Fade } from "react-awesome-reveal";
 
 export const initialData = {
   labels: [
@@ -106,35 +101,29 @@ const Diagram = ({ data }) => {
         {t("goBack")}
       </Button>
       <div
-        className={setStyle(
-          theme,
-          styles.results__wrapper,
-          styles.themeDark,
-          styles.themeLight
-        )}
+        className={setStyle(theme, styles.results__wrapper, styles.themeDark, styles.themeLight)}
       >
-        <div>
+      
           <div className={styles.main_page_wrapper}>
             <div className={styles.polarArea__text__wrapper}>
-              <h1 className={styles.main_page_title}>{t("about")}</h1>
-              <h2 className={styles.main_page_text}>{t("about_text")}</h2>
-
-              {count > 1 ? (
-                <h2 className={styles.text}>{t("null")}</h2>
-              ) : (
-                <h2 className={styles.text}>
-                  {t("advice")}{" "}
-                  {newData.labels[indexArray.indexOf(res[0])].slice(0, -3)}{" "}
-                  {t("and")}{" "}
-                  {newData.labels[indexArray.indexOf(res[1])].slice(0, -3)}
-                </h2>
-              )}
+           <Fade direction="up" cascade>
+                <h1 className={styles.main_page_title}>{t("about")}</h1>
+                <h2 className={styles.main_page_text}>{t("about_text")}</h2>
+  
+                {count > 1 ? (
+                  <h2 className={styles.text}>{t("null")}</h2>
+                ) : (
+                  <h2 className={styles.text}>
+                    {t("advice")} {newData.labels[indexArray.indexOf(res[0])].slice(0, -3)}{" "}
+                    {t("and")} {newData.labels[indexArray.indexOf(res[1])].slice(0, -3)}
+                  </h2>
+                )}
+           </Fade>
             </div>
             <div className={styles.polarArea__wrapper}>
               <PolarArea data={newData} className={styles.diagram} />
             </div>
           </div>
-        </div>
       </div>
     </>
   );
