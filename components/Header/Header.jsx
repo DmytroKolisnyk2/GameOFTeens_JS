@@ -130,7 +130,6 @@ const Header = ({ handleOpenModal }) => {
               onClick={handleOpenModal}
               className={setStyle(
                 theme,
-                HeaderStyles.settings,
                 HeaderStyles.icon,
                 HeaderStyles.darkThemeLink,
                 HeaderStyles.lightThemeLink
@@ -144,7 +143,7 @@ const Header = ({ handleOpenModal }) => {
                 <a
                   className={setStyle(
                     theme,
-                    // HeaderStyles.link,
+                    HeaderStyles.link,
                     HeaderStyles.darkThemeLink,
                     HeaderStyles.lightThemeLink
                   )}
@@ -159,7 +158,6 @@ const Header = ({ handleOpenModal }) => {
                 className={setStyle(
                   theme,
                   HeaderStyles.icon,
-                  HeaderStyles.settings,
                   HeaderStyles.darkThemeLink,
                   HeaderStyles.lightThemeLink
                 )}

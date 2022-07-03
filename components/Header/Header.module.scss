@@ -17,10 +17,6 @@
     flex-wrap: wrap;
 }
 
-.settings {
-    font-size: 35px !important;
-}
-
 .themeDark {
     background-color: $darkTheme;
 }
@@ -38,15 +34,16 @@
 }
 
 .icon {
-    transition: 600ms linear;
+    transition: 600ms linear !important;
     color: black;
-    width: 35px;
-    height: 35px;
-    cursor: pointer;
-    margin-left: 15px;
+    width: 35px !important;
+    height: 35px !important;
+    font-size: 35px !important;
+    cursor: pointer !important;
+    margin-left: 15px !important;
     &:hover {
-        color: $purple;
-        transform: rotate(180deg);
+        color: $purple !important;
+        transform: rotate(180deg) !important;
     }
 }
 
