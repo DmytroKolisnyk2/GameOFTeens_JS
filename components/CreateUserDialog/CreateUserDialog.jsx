@@ -42,7 +42,7 @@ export default function CreateUserDialog({ open, handleClose }) {
           onClick={() => {
             if (isValidName()) {
               if (input.length > 15) {
-                NotificationManager.error("type name less then 15 charackters");
+                NotificationManager.error(t("error"));
                 return;
               }
               dispatch(addUser(input));
