@@ -1,9 +1,20 @@
 @import '../../styles/variables.scss';
 
 .polarArea__wrapper {
-  width: 500px;
+  min-width: 40%;
   margin: 0 auto;
-  
+  display: flex;
+  margin-left: 100px;
+  @media (max-width: 1200px) {
+    display: block;
+    margin: 0 auto;
+    max-width: 500px;
+  }
+  @media (max-width: 320px) {
+    display: block;
+    margin: 0 auto;
+    max-width:300px;
+  }
 }
 .diagram {
   margin-bottom: 25px;
@@ -12,10 +23,16 @@
 .text {
   padding-bottom: 50px;
   font-family: $roboto;
-  text-align: left;
+  text-align: center;
   color: black;
+
 }
 .results__wrapper {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  // text-align: center;
+  max-width: 1200px;
   background-color: $belge;
   @media (max-width: 1200px) {  
     display: flex;
@@ -27,19 +44,45 @@
 
 }
 
+.main_page_wrapper {
+  display: flex;
+  justify-content: center;
+  @media(max-width: 1200px) { 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    padding-top: 100px;
+  }
+}
+
+.polarArea__text__wrapper{
+  max-width: 40%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  // margin-top: 50px;
+  @media (max-width: 1200px) {
+    max-width: 80%;
+    display: block;
+    margin: 0 auto;
+  }
+}
 .result {
   text-align: center;
   margin: 50px 0;
   font-family: $arima;
   color: black;
+  text-align: center;
 }
 
 .button {
   width: 10%;
   margin: 0 auto;
-  position: absolute;
-  left: 25px;
-  top: 120px;
+  position: relative;
+  left: 0;
+  height: 50px;
   // background-color: $purple;
 }
 
@@ -47,13 +90,13 @@
   font-size: 50px;
   font-family: $arima;
   padding-bottom: 20px;
-  text-align: left;
+  text-align: center;
  
 }
 .main_page_text{
   font-size: 18px;
   font-family: $roboto;
-  text-align: left;
+  text-align: center;
   padding-bottom: 30px;
 }
 
