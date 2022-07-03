@@ -13,6 +13,7 @@ import { getTheme } from "../../redux/theme/theme-selectors";
 import Router from "next/router";
 import SaveIcon from "@mui/icons-material/Save";
 import FactCheckIcon from "@mui/icons-material/FactCheck";
+import { Fade } from "react-awesome-reveal";
 
 const Calendar = () => {
   const t = useTranslations("Calendar");
@@ -53,67 +54,73 @@ const Calendar = () => {
         {data && (
           <form className={styles.form} onSubmit={submitValue}>
             <div className={styles.calendar}>
-              {Object.keys(data).map((day) => (
-                <div key={day} className={styles.column}>
-                  <h3
-                    className={setStyle(
-                      theme,
-                      styles.title,
-                      styles.darkThemeText,
-                      styles.lightThemeText
-                    )}
-                  >
-                    {day}
-                  </h3>
-                  {Object.keys(data[day]).map((item) => (
-                    <TextField
-                      day={day}
-                      key={`${day}-${item}`}
-                      value={data[day][item]}
-                      onChange={({ target }) => {
-                        setData((prev) => {
-                          const newData = JSON.parse(JSON.stringify(prev));
-                          newData[day][item] = +target.value;
-                          return newData;
-                        });
-                      }}
-                      margin="dense"
-                      name={`${day}-${item}`}
-                      label={item}
-                      fullWidth
-                      variant="outlined"
-                      type="number"
-                    />
-                  ))}
-                </div>
-              ))}
+              <Fade>
+                {Object.keys(data).map((day) => (
+                  <div key={day} className={styles.column}>
+                    <h3
+                      className={setStyle(
+                        theme,
+                        styles.title,
+                        styles.darkThemeText,
+                        styles.lightThemeText
+                      )}
+                    >
+                      {day}
+                    </h3>
+                    {Object.keys(data[day]).map((item) => (
+                      <TextField
+                        day={day}
+                        key={`${day}-${item}`}
+                        value={data[day][item]}
+                        onChange={({ target }) => {
+                          setData((prev) => {
+                            const newData = JSON.parse(JSON.stringify(prev));
+                            newData[day][item] = +target.value;
+                            return newData;
+                          });
+                        }}
+                        margin="dense"
+                        name={`${day}-${item}`}
+                        label={item}
+                        fullWidth
+                        variant="outlined"
+                        type="number"
+                      />
+                    ))}
+                  </div>
+                ))}
+              </Fade>
             </div>
             <div className={styles.btnWrapper}>
-              <Button
-                type="submit"
-                className={styles.submitButton}
-                variant="contained"
-                endIcon={<SaveIcon />}
-                size="large"
-                color={data === userData ? "secondary" : "error"}
-              >
-                {t("save")}
-              </Button>
-              <Button
-                onClick={() => {
-                  if (isValidData()) {
-                    Router.push("/user/result");
-                  }
-                }}
-                className={styles.button}
-                color="secondary"
-                type="text"
-                variant="outlined"
-                endIcon={<FactCheckIcon />}
-                size="large"
-              >
-                {t("result")}
-              </Button>
+              <Fade duration={1500}>
+                <Button
+                  type="submit"
+                  className={styles.submitButton}
+                  variant="contained"
+                  endIcon={<SaveIcon />}
+                  size="large"
+                  color={data === userData ? "secondary" : "error"}
+                >
+                  {t("save")}
+                </Button>
+              </Fade>
+              <Fade duration={2000}>
+                <Button
+                  onClick={() => {
+                    if (isValidData()) {
+                      Router.push("/user/result");
+                    }
+                  }}
+                  className={styles.button}
+                  color="secondary"
+                  type="text"
+                  variant="outlined"
+                  endIcon={<FactCheckIcon />}
+                  size="large"
+                >
+                  {t("result")}
+                </Button>
+              </Fade>
             </div>
           </form>
         )}

@@ -24,9 +24,11 @@ import { addCurrentUser } from "../redux/currentUser/currentUser-actions";
 import { getTheme } from "../redux/theme/theme-selectors";
 import { getUserList } from "../redux/users/user-selectors";
 import { getCurrentUserName } from "../redux/currentUser/currentUser-selectors";
-import Check from '@mui/icons-material/Check';
+import Check from "@mui/icons-material/Check";
 
-export default function Home () {
+import { Fade } from "react-awesome-reveal";
+
+export default function Home() {
   const [openDialog, setOpenDialog] = useState(false);
   const t = useTranslations("Users");
 
@@ -51,8 +53,10 @@ export default function Home () {
     <section className={setStyle(theme, styles.userSection, styles.themeDark, styles.themeLight)}>
       <div className={styles.wrapper}>
         <div>
-          <h1 className={stylesPage.main_page_title}>{t("user")}</h1>
-          <img className={styles.img} src={img.src} alt={img.src} />
+          <Fade cascade>
+            <h1 className={stylesPage.main_page_title}>{t("user")}</h1>
+            <img className={styles.img} src={img.src} alt={img.src} />
+          </Fade>
         </div>
         <div className={styles.contentWrapper}>
           <CreateUserDialog open={openDialog} handleClose={() => setOpenDialog(false)} />
@@ -64,63 +68,74 @@ export default function Home () {
               styles.cardLightTheme
             )}
           >
-            <h2
-              className={setStyle(
-                theme,
-                styles.title,
-                styles.darkThemeText,
-                styles.lightThemeText
-              )}
-            >
-              {t("how")}
-            </h2>
-            <p
-              className={setStyle(theme, styles.text, styles.darkThemeText, styles.lightThemeText)}
-            >
-              {t("guide")}
-            </p>
+            <Fade >
+              <h2
+                className={setStyle(
+                  theme,
+                  styles.title,
+                  styles.darkThemeText,
+                  styles.lightThemeText
+                )}
+              >
+                {t("how")}
+              </h2>
+              <p
+                className={setStyle(
+                  theme,
+                  styles.text,
+                  styles.darkThemeText,
+                  styles.lightThemeText
+                )}
+              >
+                {t("guide")}
+              </p>
+            </Fade>
 
             <ul className={styles.usersList}>
-              {users.map((item) => (
-                <li
-                  key={item.id}
-                  className={styles.user + " " + (item.name === username ? styles.userActive : "")}
-                >
-                  <p
-                    onClick={() => {
-                      dispatch(addCurrentUser(item));
-                      NotificationManager.success(t("added"));
-                    }}
-                    className={setStyle(
-                      theme,
-                      styles.link,
-                      styles.darkThemeText,
-                      styles.lightThemeText
-                    )}
+              <Fade duration={300} cascade direction="up">
+                {users.map((item) => (
+                  <li
+                    key={item.id}
+                    className={
+                      styles.user + " " + (item.name === username ? styles.userActive : "")
+                    }
                   >
-                    {item.name}
-                  </p>
-                  <ButtonGroup>
-                    <Button
-                      onClick={() => dispatch(removeUser(item.id))}
-                      color="secondary"
-                      variant="outlined"
-                      startIcon={<DeleteIcon />}
-                    >
-                      {t("delete")}
-                    </Button>
-                    <Button
+                    <p
                       onClick={() => {
                         dispatch(addCurrentUser(item));
                         NotificationManager.success(t("added"));
                       }}
-                      color="secondary"
-                      variant={username === item.name ? "contained" : "outlined"}
-                      endIcon={username === item.name ? <Check/> : <PersonAddAltIcon />}
-                    ></Button>
-                  </ButtonGroup>
-                </li>
-              ))}
+                      className={setStyle(
+                        theme,
+                        styles.link,
+                        styles.darkThemeText,
+                        styles.lightThemeText
+                      )}
+                    >
+                      {item.name}
+                    </p>
+                    <ButtonGroup>
+                      <Button
+                        onClick={() => dispatch(removeUser(item.id))}
+                        color="secondary"
+                        variant="outlined"
+                        startIcon={<DeleteIcon />}
+                      >
+                        {t("delete")}
+                      </Button>
+                      <Button
+                        onClick={() => {
+                          dispatch(addCurrentUser(item));
+                          NotificationManager.success(t("added"));
+                        }}
+                        color="secondary"
+                        variant={username === item.name ? "contained" : "outlined"}
+                        endIcon={username === item.name ? <Check /> : <PersonAddAltIcon />}
+                      ></Button>
+                    </ButtonGroup>
+                  </li>
+                ))}
+              </Fade>
             </ul>
             <div className={styles.controlsWrapper}>
               <Button
@@ -146,4 +161,4 @@ export default function Home () {
       </div>
     </section>
   );
-};
+}
