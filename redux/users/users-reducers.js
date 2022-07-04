@@ -29,7 +29,7 @@ export const users = createReducer([], {
   ],
 
   [removeUser]: (state, { payload }) => {
-    NotificationManager.success('Calendar successfully deleted')
+    NotificationManager.success('User successfully deleted')
     return state.filter((item) => item.id !== payload)
   },
 

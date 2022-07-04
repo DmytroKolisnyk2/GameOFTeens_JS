@@ -53,7 +53,7 @@ export default function Home() {
     <section className={setStyle(theme, styles.userSection, styles.themeDark, styles.themeLight)}>
       <div className={styles.wrapper}>
         <div>
-          <Fade cascade>
+          <Fade triggerOnce cascade>
             <h1 className={stylesPage.main_page_title}>{t("user")}</h1>
             <img className={styles.img} src={img.src} alt={img.src} />
           </Fade>
@@ -68,7 +68,7 @@ export default function Home() {
               styles.cardLightTheme
             )}
           >
-            <Fade >
+            <Fade triggerOnce>
               <h2
                 className={setStyle(
                   theme,
@@ -92,7 +92,7 @@ export default function Home() {
             </Fade>
 
             <ul className={styles.usersList}>
-              <Fade duration={300} cascade direction="up">
+              <Fade triggerOnce duration={300} cascade direction="up">
                 {users.map((item) => (
                   <li
                     key={item.id}
