@@ -1,30 +1,33 @@
 @import "../../styles//variables.scss";
 .main_title {
+    max-width: 600px;
+    margin: 0 auto;
     font-size: 35px;
     font-family: $arima;
     text-align: center;
     font-weight: 500;
     text-transform: uppercase;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
 }
 .main_text {
     font-size: 20px;
     line-height: 30px;
     font-family: $roboto;
     text-align: center;
-    font-weight: 100;
     max-width: 500px;
     margin: 0 auto;
     opacity: 0.7;
-    margin-bottom: 50px;
+    margin-bottom: 75px;
 }
 .title {
-     font-size: 35px;
+    max-width: 600px;
+    margin: 0 auto;
+    font-size: 35px;
     font-family: $arima;
     text-align: center;
     font-weight: 500;
     text-transform: uppercase;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
 }
 .cards_wrapper {
     display: flex;
@@ -33,7 +36,6 @@
     max-width: 1300px;
     margin: 0 auto;
     padding-top: 20px;
-
 }
 .item_wrapper {
     width: 250px;
@@ -72,7 +74,7 @@
 }
 .main_wrapper {
     background-color: $belge;
-    padding: 40px 20px;
+    padding: 75px 20px 40px;
 }
 .img_btn {
     margin: 0 auto;

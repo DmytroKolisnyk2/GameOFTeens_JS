@@ -54,7 +54,7 @@ const Calendar = () => {
         {data && (
           <form className={styles.form} onSubmit={submitValue}>
             <div className={styles.calendar}>
-              <Fade>
+              <Fade triggerOnce>
                 {Object.keys(data).map((day) => (
                   <div key={day} className={styles.column}>
                     <h3
@@ -92,7 +92,7 @@ const Calendar = () => {
               </Fade>
             </div>
             <div className={styles.btnWrapper}>
-              <Fade duration={1500}>
+              <Fade triggerOnce duration={1500}>
                 <Button
                   type="submit"
                   className={styles.submitButton}

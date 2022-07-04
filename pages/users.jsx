@@ -1,3 +1,5 @@
+import styles from "../styles/home.module.scss";
+
 import Router from "next/router";
 import NotificationManager from "react-notifications/lib/NotificationManager";
 
@@ -5,9 +7,6 @@ import { Button, ButtonGroup } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 
 import { useState } from "react";
-
-import styles from "../styles/home.module.scss";
-import stylesPage from "../components/MainPage/MainPage.module.scss";
 
 import img from "../img/users.png";
 
@@ -54,7 +53,7 @@ export default function Home() {
       <div className={styles.wrapper}>
         <div>
           <Fade triggerOnce cascade>
-            <h1 className={stylesPage.main_page_title}>{t("user")}</h1>
+            <h1 className={styles.main_title}>{t("user")}</h1>
             <img className={styles.img} src={img.src} alt={img.src} />
           </Fade>
         </div>

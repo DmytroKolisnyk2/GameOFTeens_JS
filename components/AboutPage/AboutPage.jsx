@@ -32,12 +32,7 @@ export default function AboutPage({ setIsOpen }) {
       <div className={styles.wrapper}>
         <Fade cascade duration={600} triggerOnce>
           <h2
-            className={setStyle(
-              theme,
-              styles.main_title,
-              styles.darkThemeText,
-              styles.lightThemeText
-            )}
+            className={setStyle(theme, styles.title, styles.darkThemeText, styles.lightThemeText)}
           >
             {t("about")}
           </h2>

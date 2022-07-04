@@ -3,7 +3,7 @@
     width: 50px;
     border-radius: 50%;
     margin-right: 30px;
-    @media (max-width: 800px) {
+    @media (max-width: 830px) {
         display: none;
     }
 }
@@ -15,6 +15,7 @@
     padding: 16px 20px;
     transition: 200ms linear;
     flex-wrap: wrap;
+    
 }
 
 .themeDark {
@@ -87,7 +88,10 @@
     width: 100vw;
     flex-wrap: wrap;
     @media (max-width: 780px) {
+    }
+    @media screen and (max-width: 740px) {
         justify-content: space-around;
+        padding: 0 30px;
     }
 }
 .user_wrapper {
@@ -106,6 +110,9 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    @media screen and (max-width: 740px) {
+        margin-bottom: 20px;
+    }
 }
 
 .navigation {
